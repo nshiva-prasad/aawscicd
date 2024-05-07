@@ -1,0 +1,94 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("images/shopping-cart-with-wooden-elements.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .centered-div {
+    position: fixed;
+    width: auto;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 5px;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  #text {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 388px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+  }
+  
+  .button-container button {
+    width: 195px;
+    height: 30px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 20px;
+    padding: 0px;
+    background-color: hsl(187, 95%, 37%);
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .button-container button:hover {
+    background-color: #127443;
+  }
+  
+  .logout-btn {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .logout-btn a {
+    color: inherit;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .button-container a,
+  #submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .alert-info {
+      background-color: #d1ecf1;
+      color: #0c5460;
+      padding: 5px;
+      margin-top: 10px;
+      border: 1px solid #bee5eb;
+      border-radius: 5px;
+      width: 400px;
+    }
+  

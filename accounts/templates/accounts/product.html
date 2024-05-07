@@ -1,0 +1,398 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/static/accounts/images/favicon.ico" />
+    <script
+      src="https://kit.fontawesome.com/f7396dff9d.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static 'customer/css/product.css' %}" />
+    <title>Joyful Surprises</title>
+  </head>
+  {% include 'customer/customer_header.html' %}
+  <body>
+    <div class="product-section">
+      <div class="img-section">
+        <div class="main-image-container">
+          <div class="thumbnail-images">
+            {% if product_data.product.product_main_image %}
+            <img src="{{ product_data.product.product_main_image }}" alt="Sub Image 5" onclick="updateLargeImage('{{ product_data.product.product_main_image }}')">
+            {% endif %}
+
+            {% if product_data.sub_images.sub_image1 %}
+            <img src="{{ product_data.sub_images.sub_image1 }}" alt="Sub Image 1" onclick="updateLargeImage('{{ product_data.sub_images.sub_image1 }}')">
+            {% endif %}
+          
+            {% if product_data.sub_images.sub_image2 %}
+            <img src="{{ product_data.sub_images.sub_image2 }}" alt="Sub Image 2" onclick="updateLargeImage('{{ product_data.sub_images.sub_image2 }}')">
+            {% endif %}
+          
+            {% if product_data.sub_images.sub_image3 %}
+            <img src="{{ product_data.sub_images.sub_image3 }}" alt="Sub Image 3" onclick="updateLargeImage('{{ product_data.sub_images.sub_image3 }}')">
+            {% endif %}
+          
+            {% if product_data.sub_images.sub_image4 %}
+            <img src="{{ product_data.sub_images.sub_image4 }}" alt="Sub Image 4" onclick="updateLargeImage('{{ product_data.sub_images.sub_image4 }}')">
+            {% endif %}
+          
+            {% if product_data.sub_images.sub_image5 %}
+            <img src="{{ product_data.sub_images.sub_image5 }}" alt="Sub Image 5" onclick="updateLargeImage('{{ product_data.sub_images.sub_image5 }}')">
+            {% endif %}
+        
+          </div>
+          <div class="largeImage-container">
+            <div class="large-img">
+              {% if product_data.product.product_main_image %}
+                <img id="largeImage" src="{{ product_data.product.product_main_image }}" alt=" main Image">
+              {% endif %}
+            </div>
+            <div class="guarantee">
+              <img src="/static/images/smile safe support.png" alt="smile" />
+            </div>
+          </div> 
+        </div>
+      </div>
+      <div class="description-section">
+        <div class="detail-info">
+          <h1>{{ product_data.product.name }}</h1>
+          <div class="price-tag">
+            <span class="rupee">₹</span>
+            <span class="discounted-price">{{ product_data.product.discounted_price }}</span>
+            <span class="actual-price">{{ product_data.product.actual_price }}</span>
+            <span class="discount-percentage"></span>
+            <span class="discount-off">Off</span>
+          </div>
+          <!-- Custommise Gift code here -->
+          <h1>Customize Your Gift</h1>
+          <form method="POST" id="contentform" enctype='multipart/form-data'>
+            <input type="hidden" name="product_id" value="{{ product_data.product.product_id }}">
+            <script>
+              var csrfToken = '{{ csrf_token }}';
+            </script>
+            {% for tag in product_data.tags %}
+            {% if tag.tag == 'text' %}
+                <!-- Text Input -->
+                <label for="{{ tag.tagname }}">{{ tag.tagname }}</label>
+                <textarea name="{{ tag.tagname }}" id="{{ tag.tagname }}" required></textarea>
+                {% if tag.has_color %}
+                    <!-- Color Picker -->
+                    <input type="color" name="{{ tag.tagname }}_color" id="{{ tag.tagname }}_color" style="width: 30px; height: 30px; padding: 0; margin-right: 10px;">
+                    <span id="{{ tag.tagname }}_color_code"></span><br>
+                {% else %}
+                    <br>
+                {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% for tag in product_data.tags %}
+                {% if tag.tag == 'date_picker' %}
+                    <!-- Date Picker -->
+                    <label for="{{ tag.tagname }}">{{ tag.tagname }}</label>
+                    <input type="date" name="{{ tag.tagname }}" id="{{ tag.tagname }}" value="2023-08-05" required><br>
+                {% endif %}
+            {% endfor %}
+
+            <!-- For single image upload -->
+            {% for tag in product_data.tags %}
+            {% if tag.tag == 'image' %}
+                <label for="{{ tag.tagname }}">{{ tag.tagname }}</label>
+                <input type="file" name="{{ tag.tagname }}" id="{{ tag.tagname }}" accept="image/*" required>
+                <div class="custom-image-preview-container" id="{{ tag.tagname }}_preview"></div>
+                <br>
+            {% endif %}
+            {% endfor %}
+
+            <!-- For multiple image upload -->
+            {% for tag in product_data.tags %}
+            {% if tag.tag == 'multiple_images' %}
+                <label for="{{ tag.tagname }}">{{ tag.tagname }}</label>
+                <input type="file" name="{{ tag.tagname }}" id="{{ tag.tagname }}" accept="image/*" multiple required>
+                <div class="custom-image-preview-container" id="{{ tag.tagname }}_preview"></div>
+                <br>
+            {% endif %}
+            {% endfor %}
+
+            {% if product_data.tags %}
+            <input type="submit" value="Submit Order">
+            {% endif %}
+          </form>
+          <button class="add-to-cart">Add To Cart</button>
+          <button class="buy-now">Buy Now</button>
+           <!-- Heading 1        -->
+          {% if product_data.descriptions.heading1 %}
+          <h2>{{ product_data.descriptions.heading1 }}</h2>  
+          {% endif %}
+          <!-- Heading 1 Text -->
+          {% if product_data.descriptions.text1 %}
+          <p>{{ product_data.descriptions.text1 }}</p>
+          {% endif %}
+           <!-- Heading 1 Sub 1  -->
+          {% if product_data.descriptions.subheadingd1 %}
+          <h3>{{ product_data.descriptions.subheadingd1 }}</h3>
+          {% endif %}
+          {% if product_data.descriptions.subheadingd1 %}
+          <p>{{ product_data.descriptions.subheadingd1 }}</p>
+          {% endif %}
+          {% if product_data.descriptions.subheadingd1_lines %}
+            <ul>
+              {% for line in product_data.descriptions.subheadingd2_lines %}
+                <li>{{ line }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {% if product_data.descriptions.subheadingd2 %}
+          <h3>{{ product_data.descriptions.subheadingd2 }}</h3>
+          {% endif %}
+          {% if product_data.descriptions.subheadingd2 %}   
+          <p>{{ product_data.descriptions.subheadingd2 }}</p>
+          {% endif %}
+          {% if product_data.descriptions.subheadingd2_lines %}
+            <ul>
+              {% for line in product_data.descriptions.subheadingd2_lines %}
+                <li>{{ line }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {% if product_data.descriptions.heading2 %}
+          <h2>{{ product_data.descriptions.heading2 }}</h2>  
+          {% endif %}
+           <!-- Heading 1 Sub 1  -->
+          {% if product_data.descriptions.subheadingdi1 %}
+          <h3>{{ product_data.descriptions.subheadingdi1 }}</h3>
+          {% endif %}
+          {% if product_data.descriptions.subheadingdi1_lines %}
+            <ul>
+              {% for line in product_data.descriptions.subheadingdi1_lines %}
+                <li>{{ line }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {% if product_data.descriptions.heading3 %}
+          <h2>{{ product_data.descriptions.heading3 }}</h2>  
+          {% endif %}
+           <!-- Heading 1 Sub 1  -->
+          {% if product_data.descriptions.subheadingi1 %}
+          <h3>{{ product_data.descriptions.subheadingi1 }}</h3>
+          {% endif %}
+          {% if product_data.descriptions.subheadingi1_lines %}
+            <ul>
+              {% for line in product_data.descriptions.subheadingi1_lines %}
+                <li>{{ line }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <!-- Add more content here as needed -->
+      </div>
+    </div>
+    
+    <!-- mobile view -->
+    <div class="container">
+      <div class="first">
+        <div class="slideshow">
+          {% if product_data.product.product_main_image %}
+            <img src="{{ product_data.product.product_main_image }}" alt="Sub Image 5">
+          {% endif %}
+          {% if product_data.sub_images.sub_image1 %}
+          <img src="{{ product_data.sub_images.sub_image1 }}" alt="Sub Image 1">
+          {% endif %}
+        
+          {% if product_data.sub_images.sub_image2 %}
+          <img src="{{ product_data.sub_images.sub_image2 }}" alt="Sub Image 2">
+          {% endif %}
+        
+          {% if product_data.sub_images.sub_image3 %}
+          <img src="{{ product_data.sub_images.sub_image3 }}" alt="Sub Image 3">
+          {% endif %}
+        
+          {% if product_data.sub_images.sub_image4 %}
+          <img src="{{ product_data.sub_images.sub_image4 }}" alt="Sub Image 4">
+          {% endif %}
+        
+          {% if product_data.sub_images.sub_image5 %}
+          <img src="{{ product_data.sub_images.sub_image5 }}" alt="Sub Image 5">
+          {% endif %}
+        </div>
+      </div>
+      <div class="second">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid nesciunt, harum adipisci quod, id quas, mollitia dolores explicabo possimus iure doloremque! Optio temporibus odit nesciunt, quis sapiente ratione, ea deleniti tempore ex autem dolorem placeat incidunt, iste quas alias provident neque aliquid impedit corporis. Explicabo reprehenderit cum atque? Repellat, laudantium dolor magnam, nisi inventore minima esse perferendis consequuntur autem repudiandae nostrum temporibus amet sint, nobis assumenda eum quidem recusandae vero ullam dolorem sapiente! Ipsa iste, ad rerum dolores corrupti maxime distinctio. Similique in culpa cumque asperiores nobis officiis vero atque quas? Facilis tempore voluptates labore atque similique. Vel, id omnis.
+      </div>
+      <div class="third">
+        <button class="add-to-cart">Add To Cart</button>
+        <button class="buy-now">Buy Now</button>
+      </div>
+  </div>
+
+    <div class="product-grid">
+      <div class="product-item" data-product-id="1">
+        <div class="best-seller-tag">Best Seller</div>
+        <div class="product-image">
+          <!-- Add your image(s) here with swipe functionality -->
+          <img src="/static/images/product-banner.jpg" alt="Product Image">
+        </div>
+        <div class="favorite-icon">
+          <i class="fa-regular fa-heart" style="color: #f00f26;" onclick="handleFavoriteClick(this)"></i>
+        </div>
+        <div class="product-price">₹999</div>
+        <div class="actual-price" style="text-decoration: line-through;">₹1999</div>
+        <div class="action-buttons">
+          <button class="action-cart">Add to Cart</button>
+          <button class="action-buy">Buy Now</button>
+        </div>
+      </div>
+      
+      <div class="product-item" data-product-id="2">
+        <div class="best-seller-tag">Best Seller</div>
+        <div class="product-image">
+          <!-- Add your image(s) here with swipe functionality -->
+          <img src="/static/images/product-banner.jpg" alt="Product Image">
+        </div>
+        <div class="favorite-icon">
+          <i class="fa-regular fa-heart" style="color: #f00f26;" onclick="handleFavoriteClick(this)"></i>
+        </div>
+        <div class="product-price">₹999</div>
+        <div class="actual-price" style="text-decoration: line-through;">₹1999</div>
+        <div class="action-buttons">
+          <button class="action-cart">Add to Cart</button>
+          <button class="action-buy">Buy Now</button>
+        </div>
+      </div>
+      <div class="product-item" data-product-id="3">
+        <div class="best-seller-tag">Best Seller</div>
+        <div class="product-image">
+          <!-- Add your image(s) here with swipe functionality -->
+          <img src="/static/images/product-banner.jpg" alt="Product Image">
+        </div>
+        <div class="favorite-icon">
+          <i class="fa-regular fa-heart" style="color: #f00f26;" onclick="handleFavoriteClick(this)"></i>
+        </div>
+        <div class="product-price">₹999</div>
+        <div class="actual-price" style="text-decoration: line-through;">₹1999</div>
+        <div class="action-buttons">
+          <button class="action-cart">Add to Cart</button>
+          <button class="action-buy">Buy Now</button>
+        </div>
+      </div>
+      
+      <div class="product-item" data-product-id="4">
+        <div class="best-seller-tag">Best Seller</div>
+        <div class="product-image">
+          <!-- Add your image(s) here with swipe functionality -->
+          <img src="/static/images/product-banner.jpg" alt="Product Image">
+        </div>
+        <div class="favorite-icon">
+          <i class="fa-regular fa-heart" style="color: #f00f26;" onclick="handleFavoriteClick(this)"></i>
+        </div>
+        <div class="product-price">₹999</div>
+        <div class="actual-price" style="text-decoration: line-through;">₹1999</div>
+        <div class="action-buttons">
+          <button class="action-cart">Add to Cart</button>
+          <button class="action-buy">Buy Now</button>
+        </div>
+      </div>
+      <div class="product-item" data-product-id="5">
+        <div class="best-seller-tag">Best Seller</div>
+        <div class="product-image">
+          <!-- Add your image(s) here with swipe functionality -->
+          <img src="/static/images/product-banner.jpg" alt="Product Image">
+        </div>
+        <div class="favorite-icon">
+          <i class="fa-regular fa-heart" style="color: #f00f26;" onclick="handleFavoriteClick(this)"></i>
+        </div>
+        <div class="product-price">₹999</div>
+        <div class="actual-price" style="text-decoration: line-through;">₹1999</div>
+        <div class="action-buttons">
+          <button class="action-cart">Add to Cart</button>
+          <button class="action-buy">Buy Now</button>
+        </div>
+      </div>
+      
+      <div class="product-item" data-product-id="6">
+        <div class="best-seller-tag">Best Seller</div>
+        <div class="product-image">
+          <!-- Add your image(s) here with swipe functionality -->
+          <img src="/static/images/product-banner.jpg" alt="Product Image">
+        </div>
+        <div class="favorite-icon">
+          <i class="fa-regular fa-heart" style="color: #f00f26;" onclick="handleFavoriteClick(this)"></i>
+        </div>
+        <div class="product-price">₹999</div>
+        <div class="actual-price" style="text-decoration: line-through;">₹1999</div>
+        <div class="action-buttons">
+          <button class="action-cart">Add to Cart</button>
+          <button class="action-buy">Buy Now</button>
+        </div>
+      </div>
+      <div class="product-item" data-product-id="7">
+        <div class="best-seller-tag">Best Seller</div>
+        <div class="product-image">
+          <!-- Add your image(s) here with swipe functionality -->
+          <img src="/static/images/product-banner.jpg" alt="Product Image">
+        </div>
+        <div class="favorite-icon">
+          <i class="fa-regular fa-heart" style="color: #f00f26;" onclick="handleFavoriteClick(this)"></i>
+        </div>
+        <div class="product-price">₹999</div>
+        <div class="actual-price" style="text-decoration: line-through;">₹1999</div>
+        <div class="action-buttons">
+          <button class="action-cart">Add to Cart</button>
+          <button class="action-buy">Buy Now</button>
+        </div>
+      </div>
+      
+      <div class="product-item" data-product-id="8">
+        <div class="best-seller-tag">Best Seller</div>
+        <div class="product-image">
+          <!-- Add your image(s) here with swipe functionality -->
+          <img src="/static/images/product-banner.jpg" alt="Product Image">
+        </div>
+        <div class="favorite-icon">
+          <i class="fa-regular fa-heart" style="color: #f00f26;" onclick="handleFavoriteClick(this)"></i>
+        </div>
+        <div class="product-price">₹999</div>
+        <div class="actual-price" style="text-decoration: line-through;">₹1999</div>
+        <div class="action-buttons">
+          <button class="action-cart">Add to Cart</button>
+          <button class="action-buy">Buy Now</button>
+        </div>
+      </div>
+      <div class="product-item" data-product-id="9">
+        <div class="best-seller-tag">Best Seller</div>
+        <div class="product-image">
+          <!-- Add your image(s) here with swipe functionality -->
+          <img src="/static/images/product-banner.jpg" alt="Product Image">
+        </div>
+        <div class="favorite-icon">
+          <i class="fa-regular fa-heart" style="color: #f00f26;" onclick="handleFavoriteClick(this)"></i>
+        </div>
+        <div class="product-price">₹999</div>
+        <div class="actual-price" style="text-decoration: line-through;">₹1999</div>
+        <div class="action-buttons">
+          <button class="action-cart">Add to Cart</button>
+          <button class="action-buy">Buy Now</button>
+        </div>
+      </div>
+      
+      <div class="product-item" data-product-id="10">
+        <div class="best-seller-tag">Best Seller</div>
+        <div class="product-image">
+          <!-- Add your image(s) here with swipe functionality -->
+          <img src="/static/images/product-banner.jpg" alt="Product Image">
+        </div>
+        <div class="favorite-icon">
+          <i class="fa-regular fa-heart" style="color: #f00f26;" onclick="handleFavoriteClick(this)"></i>
+        </div>
+        <div class="product-price">₹999</div>
+        <div class="actual-price" style="text-decoration: line-through;">₹1999</div>
+        <div class="action-buttons">
+          <button class="action-cart">Add to Cart</button>
+          <button class="action-buy">Buy Now</button>
+        </div>
+      </div>
+      <!-- Add more product items here -->
+    </div>
+  </body>
+</html>
+<script src="{% static 'customer/js/product.js' %}"></script>

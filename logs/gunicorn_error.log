@@ -1,0 +1,294 @@
+[2024-03-05 14:28:13 +0530] [6411] [INFO] Starting gunicorn 21.2.0
+[2024-03-05 14:28:13 +0530] [6411] [INFO] Listening at: unix:/run/gunicorn.sock (6411)
+[2024-03-05 14:28:13 +0530] [6411] [INFO] Using worker: sync
+[2024-03-05 14:28:13 +0530] [6413] [INFO] Booting worker with pid: 6413
+[2024-03-05 14:28:13 +0530] [6415] [INFO] Booting worker with pid: 6415
+[2024-03-05 14:28:13 +0530] [6416] [INFO] Booting worker with pid: 6416
+ - - [05/Mar/2024:14:28:13 +0530] "GET /login/ HTTP/1.0" 200 973 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.0"
+[2024-03-05 14:31:19 +0530] [6411] [INFO] Handling signal: term
+[2024-03-05 14:31:19 +0530] [6413] [INFO] Worker exiting (pid: 6413)
+[2024-03-05 14:31:19 +0530] [6416] [INFO] Worker exiting (pid: 6416)
+[2024-03-05 14:31:19 +0530] [6415] [INFO] Worker exiting (pid: 6415)
+[2024-03-05 14:31:20 +0530] [6411] [INFO] Shutting down: Master
+[2024-03-06 08:01:25 +0530] [6158] [INFO] Starting gunicorn 21.2.0
+[2024-03-06 08:01:25 +0530] [6158] [INFO] Listening at: unix:/run/gunicorn.sock (6158)
+[2024-03-06 08:01:25 +0530] [6158] [INFO] Using worker: sync
+[2024-03-06 08:01:25 +0530] [6163] [INFO] Booting worker with pid: 6163
+[2024-03-06 08:01:25 +0530] [6164] [INFO] Booting worker with pid: 6164
+[2024-03-06 08:01:25 +0530] [6165] [INFO] Booting worker with pid: 6165
+Not Found: /
+ - - [06/Mar/2024:08:01:25 +0530] "GET / HTTP/1.0" 404 4144 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [06/Mar/2024:08:01:35 +0530] "GET /home HTTP/1.0" 301 0 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [06/Mar/2024:08:01:35 +0530] "GET /home/ HTTP/1.0" 200 997 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [06/Mar/2024:08:02:03 +0530] "GET /logout/ HTTP/1.0" 302 0 "http://127.0.0.1/home/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [06/Mar/2024:08:02:03 +0530] "GET /login/ HTTP/1.0" 200 974 "http://127.0.0.1/home/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [06/Mar/2024:08:02:12 +0530] "POST /login/ HTTP/1.0" 200 1060 "http://127.0.0.1/login/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [06/Mar/2024:08:02:17 +0530] "GET /request-otp/ HTTP/1.0" 200 761 "http://127.0.0.1/login/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+the email_or_phone generated for the user is: nspr4321@gmail.com
+the otp generated for the user is: 466749 <class 'int'>
+ - - [06/Mar/2024:08:02:22 +0530] "POST /request-otp/ HTTP/1.0" 302 0 "http://127.0.0.1/request-otp/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [06/Mar/2024:08:02:22 +0530] "GET /verify-otp/nspr4321@gmail.com/ HTTP/1.0" 200 801 "http://127.0.0.1/request-otp/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+New OTP generated for user: 136235 <class 'int'>
+ - - [06/Mar/2024:08:02:23 +0530] "GET /resend-otp/nspr4321@gmail.com/ HTTP/1.0" 302 0 "http://127.0.0.1/verify-otp/nspr4321@gmail.com/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [06/Mar/2024:08:02:24 +0530] "GET /verify-otp/nspr4321@gmail.com/ HTTP/1.0" 200 799 "http://127.0.0.1/verify-otp/nspr4321@gmail.com/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+New OTP generated for user: 646164 <class 'int'>
+ - - [06/Mar/2024:08:02:29 +0530] "GET /resend-otp/nspr4321@gmail.com/ HTTP/1.0" 302 0 "http://127.0.0.1/verify-otp/nspr4321@gmail.com/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [06/Mar/2024:08:02:30 +0530] "GET /verify-otp/nspr4321@gmail.com/ HTTP/1.0" 200 799 "http://127.0.0.1/verify-otp/nspr4321@gmail.com/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+New OTP generated for user: 474550 <class 'int'>
+ - - [06/Mar/2024:08:02:31 +0530] "GET /resend-otp/nspr4321@gmail.com/ HTTP/1.0" 302 0 "http://127.0.0.1/verify-otp/nspr4321@gmail.com/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [06/Mar/2024:08:02:31 +0530] "GET /verify-otp/nspr4321@gmail.com/ HTTP/1.0" 200 799 "http://127.0.0.1/verify-otp/nspr4321@gmail.com/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+New OTP generated for user: 218190 <class 'int'>
+ - - [06/Mar/2024:08:02:31 +0530] "GET /resend-otp/nspr4321@gmail.com/ HTTP/1.0" 302 0 "http://127.0.0.1/verify-otp/nspr4321@gmail.com/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [06/Mar/2024:08:02:31 +0530] "GET /verify-otp/nspr4321@gmail.com/ HTTP/1.0" 200 799 "http://127.0.0.1/verify-otp/nspr4321@gmail.com/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+New OTP generated for user: 763114 <class 'int'>
+ - - [06/Mar/2024:08:02:32 +0530] "GET /resend-otp/nspr4321@gmail.com/ HTTP/1.0" 302 0 "http://127.0.0.1/verify-otp/nspr4321@gmail.com/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [06/Mar/2024:08:02:32 +0530] "GET /verify-otp/nspr4321@gmail.com/ HTTP/1.0" 200 799 "http://127.0.0.1/verify-otp/nspr4321@gmail.com/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+[2024-03-06 08:13:11 +0530] [6158] [INFO] Handling signal: term
+[2024-03-06 08:13:11 +0530] [6163] [INFO] Worker exiting (pid: 6163)
+[2024-03-06 08:13:11 +0530] [6164] [INFO] Worker exiting (pid: 6164)
+[2024-03-06 08:13:11 +0530] [6165] [INFO] Worker exiting (pid: 6165)
+[2024-03-06 08:13:11 +0530] [6158] [INFO] Shutting down: Master
+[2024-03-06 19:59:06 +0530] [6755] [INFO] Starting gunicorn 21.2.0
+[2024-03-06 19:59:06 +0530] [6755] [INFO] Listening at: unix:/run/gunicorn.sock (6755)
+[2024-03-06 19:59:06 +0530] [6755] [INFO] Using worker: sync
+[2024-03-06 19:59:06 +0530] [6757] [INFO] Booting worker with pid: 6757
+[2024-03-06 19:59:06 +0530] [6758] [INFO] Booting worker with pid: 6758
+[2024-03-06 19:59:06 +0530] [6759] [INFO] Booting worker with pid: 6759
+Not Found: /
+ - - [06/Mar/2024:19:59:06 +0530] "GET / HTTP/1.0" 404 4144 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+[2024-03-06 20:08:01 +0530] [6755] [INFO] Handling signal: term
+[2024-03-06 20:08:01 +0530] [6758] [INFO] Worker exiting (pid: 6758)
+[2024-03-06 20:08:01 +0530] [6757] [INFO] Worker exiting (pid: 6757)
+[2024-03-06 20:08:01 +0530] [6759] [INFO] Worker exiting (pid: 6759)
+[2024-03-06 20:08:01 +0530] [6755] [INFO] Shutting down: Master
+[2024-03-06 20:08:10 +0530] [11680] [INFO] Starting gunicorn 21.2.0
+[2024-03-06 20:08:10 +0530] [11680] [INFO] Listening at: unix:/run/gunicorn.sock (11680)
+[2024-03-06 20:08:10 +0530] [11680] [INFO] Using worker: sync
+[2024-03-06 20:08:10 +0530] [11682] [INFO] Booting worker with pid: 11682
+[2024-03-06 20:08:10 +0530] [11683] [INFO] Booting worker with pid: 11683
+[2024-03-06 20:08:10 +0530] [11686] [INFO] Booting worker with pid: 11686
+Not Found: /
+ - - [06/Mar/2024:20:08:10 +0530] "GET / HTTP/1.0" 404 4144 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+[2024-03-06 20:08:23 +0530] [11686] [INFO] Worker exiting (pid: 11686)
+[2024-03-06 20:08:23 +0530] [11682] [INFO] Worker exiting (pid: 11682)
+[2024-03-06 20:08:23 +0530] [11680] [INFO] Handling signal: term
+[2024-03-06 20:08:23 +0530] [11683] [INFO] Worker exiting (pid: 11683)
+[2024-03-06 20:08:23 +0530] [11680] [ERROR] Worker (pid:11686) was sent SIGTERM!
+[2024-03-06 20:08:23 +0530] [11680] [INFO] Shutting down: Master
+[2024-03-10 08:29:10 +0530] [5163] [INFO] Starting gunicorn 21.2.0
+[2024-03-10 08:29:10 +0530] [5163] [INFO] Listening at: unix:/run/gunicorn.sock (5163)
+[2024-03-10 08:29:10 +0530] [5163] [INFO] Using worker: sync
+[2024-03-10 08:29:10 +0530] [5174] [INFO] Booting worker with pid: 5174
+[2024-03-10 08:29:10 +0530] [5175] [INFO] Booting worker with pid: 5175
+[2024-03-10 08:29:10 +0530] [5176] [INFO] Booting worker with pid: 5176
+[{'image': '/media/MainBanner/mainbanner.jpeg', 'alternate_text': 'rakhi', 'active': True}, {'image': '/media/MainBanner/unsplash_1.jpg', 'alternate_text': 'rakhi', 'active': True}]
+ - - [10/Mar/2024:08:29:10 +0530] "GET / HTTP/1.0" 200 17454 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:10 +0530] "GET /media/MainBanner/mainbanner.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:10 +0530] "GET /media/CircleCategory/reset.jpg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/MainBanner/unsplash_1.jpg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/SubBanner/subbanner.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/SubBanner/subbanner_J9prxq1.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/SubBanner/subbanner_bFxn6Q2.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/LeftImageContainer/sidebanner.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/LeftContainerSubImages/productbanner.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/LeftContainerSubImages/productbanner_NiUayFT.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/LeftContainerSubImages/productbanner_yGxvC02.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/LeftContainerSubImages/productbanner_BUdd5UJ.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/LeftContainerSubImages/productbanner_pRS8Xhd.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/LeftContainerSubImages/productbanner_z5rxnPu.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/RightContainerSubImages/productbanner.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/RightContainerSubImages/productbanner_SWIT2H8.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/RightContainerSubImages/productbanner_gxHauWL.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/RightContainerSubImages/productbanner_zoZuYbw.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/RightContainerSubImages/productbanner_DwKuUAb.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/RightContainerSubImages/productbanner_FpW0BNL.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:29:11 +0530] "GET /media/RightImageContainer/sidebanner.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+[2024-03-10 08:31:40 +0530] [5163] [INFO] Handling signal: term
+[2024-03-10 08:31:40 +0530] [5176] [INFO] Worker exiting (pid: 5176)
+[2024-03-10 08:31:40 +0530] [5174] [INFO] Worker exiting (pid: 5174)
+[2024-03-10 08:31:40 +0530] [5175] [INFO] Worker exiting (pid: 5175)
+[2024-03-10 08:31:40 +0530] [5163] [INFO] Shutting down: Master
+[2024-03-10 08:31:40 +0530] [8285] [INFO] Starting gunicorn 21.2.0
+[2024-03-10 08:31:40 +0530] [8285] [INFO] Listening at: unix:/run/gunicorn.sock (8285)
+[2024-03-10 08:31:40 +0530] [8285] [INFO] Using worker: sync
+[2024-03-10 08:31:40 +0530] [8286] [INFO] Booting worker with pid: 8286
+[2024-03-10 08:31:40 +0530] [8287] [INFO] Booting worker with pid: 8287
+[2024-03-10 08:31:40 +0530] [8288] [INFO] Booting worker with pid: 8288
+[{'image': '/media/MainBanner/mainbanner.jpeg', 'alternate_text': 'rakhi', 'active': True}, {'image': '/media/MainBanner/unsplash_1.jpg', 'alternate_text': 'rakhi', 'active': True}]
+ - - [10/Mar/2024:08:31:46 +0530] "GET / HTTP/1.0" 200 17454 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/CircleCategory/reset.jpg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/MainBanner/mainbanner.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/MainBanner/unsplash_1.jpg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/SubBanner/subbanner.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/SubBanner/subbanner_bFxn6Q2.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/SubBanner/subbanner_J9prxq1.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/LeftContainerSubImages/productbanner.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/LeftImageContainer/sidebanner.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/LeftContainerSubImages/productbanner_NiUayFT.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/LeftContainerSubImages/productbanner_yGxvC02.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/LeftContainerSubImages/productbanner_BUdd5UJ.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/LeftContainerSubImages/productbanner_pRS8Xhd.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/RightContainerSubImages/productbanner.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/LeftContainerSubImages/productbanner_z5rxnPu.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/RightContainerSubImages/productbanner_SWIT2H8.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/RightContainerSubImages/productbanner_zoZuYbw.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/RightContainerSubImages/productbanner_DwKuUAb.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/RightContainerSubImages/productbanner_FpW0BNL.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/RightImageContainer/sidebanner.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:31:46 +0530] "GET /media/RightContainerSubImages/productbanner_gxHauWL.jpeg HTTP/1.0" 200 0 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:32:16 +0530] "GET /login/ HTTP/1.0" 200 3782 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:32:20 +0530] "POST /login/ HTTP/1.0" 200 3933 "http://127.0.0.1/login/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+7675066270 Davis@1997
+ - - [10/Mar/2024:08:32:25 +0530] "POST /login/ HTTP/1.0" 200 3962 "http://127.0.0.1/login/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:32:29 +0530] "GET /request-otp/ HTTP/1.0" 200 1185 "http://127.0.0.1/login/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:32:38 +0530] "POST /request-otp/ HTTP/1.0" 302 0 "http://127.0.0.1/request-otp/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+ - - [10/Mar/2024:08:32:38 +0530] "GET /verify-otp/7675066270/ HTTP/1.0" 200 1476 "http://127.0.0.1/request-otp/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+[{'image': '/media/MainBanner/mainbanner.jpeg', 'alternate_text': 'rakhi', 'active': True}, {'image': '/media/MainBanner/unsplash_1.jpg', 'alternate_text': 'rakhi', 'active': True}]
+ - - [10/Mar/2024:08:32:53 +0530] "GET / HTTP/1.0" 200 17454 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+[2024-03-10 08:47:03 +0530] [8285] [INFO] Handling signal: term
+[2024-03-10 08:47:03 +0530] [8286] [INFO] Worker exiting (pid: 8286)
+[2024-03-10 08:47:03 +0530] [8288] [INFO] Worker exiting (pid: 8288)
+[2024-03-10 08:47:03 +0530] [8287] [INFO] Worker exiting (pid: 8287)
+[2024-03-10 08:47:03 +0530] [8285] [INFO] Shutting down: Master
+[2024-03-12 15:35:07 +0530] [11037] [INFO] Starting gunicorn 21.2.0
+[2024-03-12 15:35:07 +0530] [11037] [INFO] Listening at: unix:/run/gunicorn.sock (11037)
+[2024-03-12 15:35:07 +0530] [11037] [INFO] Using worker: sync
+[2024-03-12 15:35:07 +0530] [11042] [INFO] Booting worker with pid: 11042
+[2024-03-12 15:35:07 +0530] [11043] [INFO] Booting worker with pid: 11043
+[2024-03-12 15:35:07 +0530] [11044] [INFO] Booting worker with pid: 11044
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/shiva/Desktop/Project/joyfulsurprises/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/shiva/Desktop/Project/joyfulsurprises/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/shiva/Desktop/Project/joyfulsurprises/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/shiva/Desktop/Project/joyfulsurprises/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/shiva/Desktop/Project/joyfulsurprises/dashboard/views.py", line 22, in get
+    drop_down_data = get_super_categories()
+  File "/home/shiva/Desktop/Project/joyfulsurprises/dashboard/helpers.py", line 11, in get_super_categories
+    super_categories = SuperCategory.objects.all()
+NameError: name 'SuperCategory' is not defined
+ - - [12/Mar/2024:15:35:07 +0530] "GET / HTTP/1.0" 500 81053 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+[2024-03-12 15:35:58 +0530] [11037] [INFO] Handling signal: term
+[2024-03-12 15:35:58 +0530] [11044] [INFO] Worker exiting (pid: 11044)
+[2024-03-12 15:35:58 +0530] [11042] [INFO] Worker exiting (pid: 11042)
+[2024-03-12 15:35:58 +0530] [11043] [INFO] Worker exiting (pid: 11043)
+[2024-03-12 15:35:58 +0530] [11037] [INFO] Shutting down: Master
+[2024-05-06 11:01:11 +0530] [132372] [INFO] Starting gunicorn 21.2.0
+[2024-05-06 11:01:11 +0530] [132372] [INFO] Listening at: http://0.0.0.0:8000 (132372)
+[2024-05-06 11:01:11 +0530] [132372] [INFO] Using worker: sync
+[2024-05-06 11:01:11 +0530] [132376] [INFO] Booting worker with pid: 132376
+[2024-05-06 11:01:11 +0530] [132377] [INFO] Booting worker with pid: 132377
+[2024-05-06 11:01:19 +0530] [132372] [INFO] Handling signal: winch
+[2024-05-06 11:01:21 +0530] [132372] [INFO] Handling signal: winch
+[2024-05-06 11:01:22 +0530] [132372] [INFO] Handling signal: hup
+[2024-05-06 11:01:22 +0530] [132372] [INFO] Hang up: Master
+[2024-05-06 11:01:22 +0530] [132372] [ERROR] Worker (pid:132376) was sent SIGHUP!
+[2024-05-06 11:01:22 +0530] [132372] [ERROR] Worker (pid:132377) was sent SIGHUP!
+[2024-05-06 11:01:22 +0530] [132788] [INFO] Booting worker with pid: 132788
+[2024-05-06 11:01:22 +0530] [132789] [INFO] Booting worker with pid: 132789
+[2024-05-06 11:01:30 +0530] [133006] [INFO] Starting gunicorn 21.2.0
+[2024-05-06 11:01:30 +0530] [133006] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-05-06 11:01:30 +0530] [133006] [ERROR] Retrying in 1 second.
+[2024-05-06 11:01:31 +0530] [133006] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-05-06 11:01:31 +0530] [133006] [ERROR] Retrying in 1 second.
+[2024-05-06 11:01:32 +0530] [133006] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-05-06 11:01:32 +0530] [133006] [ERROR] Retrying in 1 second.
+[2024-05-06 11:01:33 +0530] [133006] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-05-06 11:01:33 +0530] [133006] [ERROR] Retrying in 1 second.
+[2024-05-06 11:01:34 +0530] [133006] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-05-06 11:01:34 +0530] [133006] [ERROR] Retrying in 1 second.
+[2024-05-06 11:01:35 +0530] [133006] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2024-05-06 11:01:50 +0530] [133500] [INFO] Starting gunicorn 21.2.0
+[2024-05-06 11:01:50 +0530] [133500] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-05-06 11:01:50 +0530] [133500] [ERROR] Retrying in 1 second.
+[2024-05-06 11:01:51 +0530] [133500] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-05-06 11:01:51 +0530] [133500] [ERROR] Retrying in 1 second.
+[2024-05-06 11:01:52 +0530] [133500] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-05-06 11:01:52 +0530] [133500] [ERROR] Retrying in 1 second.
+[2024-05-06 11:01:53 +0530] [133500] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-05-06 11:01:53 +0530] [133500] [ERROR] Retrying in 1 second.
+[2024-05-06 11:01:54 +0530] [133500] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-05-06 11:01:54 +0530] [133500] [ERROR] Retrying in 1 second.
+[2024-05-06 11:01:55 +0530] [133500] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2024-05-06 11:02:47 +0530] [134872] [INFO] Starting gunicorn 21.2.0
+[2024-05-06 11:02:47 +0530] [134872] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-05-06 11:02:47 +0530] [134872] [ERROR] Retrying in 1 second.
+[2024-05-06 11:02:48 +0530] [134872] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-05-06 11:02:48 +0530] [134872] [ERROR] Retrying in 1 second.
+[2024-05-06 11:02:49 +0530] [134872] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-05-06 11:02:49 +0530] [134872] [ERROR] Retrying in 1 second.
+[2024-05-06 11:02:50 +0530] [134872] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-05-06 11:02:50 +0530] [134872] [ERROR] Retrying in 1 second.
+[2024-05-06 11:02:51 +0530] [134872] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2024-05-06 11:02:51 +0530] [134872] [ERROR] Retrying in 1 second.
+[2024-05-06 11:02:52 +0530] [134872] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2024-05-06 11:04:26 +0530] [132372] [INFO] Handling signal: term
+[2024-05-06 11:04:26 +0530] [132788] [INFO] Worker exiting (pid: 132788)
+[2024-05-06 11:04:26 +0530] [132789] [INFO] Worker exiting (pid: 132789)
+[2024-05-06 11:04:27 +0530] [132372] [INFO] Shutting down: Master
+[2024-05-06 11:04:32 +0530] [137464] [INFO] Starting gunicorn 21.2.0
+[2024-05-06 11:04:32 +0530] [137464] [INFO] Listening at: http://0.0.0.0:8000 (137464)
+[2024-05-06 11:04:32 +0530] [137464] [INFO] Using worker: sync
+[2024-05-06 11:04:32 +0530] [137465] [INFO] Booting worker with pid: 137465
+[2024-05-06 11:04:32 +0530] [137466] [INFO] Booting worker with pid: 137466
+Not Found: /None
+Not Found: /None
+Not Found: /None
+Not Found: /None
+Not Found: /None
+Not Found: /None
+Not Found: /None
+Not Found: /None
+Not Found: /None
+[2024-05-06 11:05:41 +0530] [137464] [INFO] Handling signal: int
+[2024-05-06 11:05:41 +0530] [137466] [INFO] Worker exiting (pid: 137466)
+[2024-05-06 11:05:41 +0530] [137465] [INFO] Worker exiting (pid: 137465)
+[2024-05-06 11:05:42 +0530] [137464] [INFO] Shutting down: Master
+[2024-05-06 11:05:49 +0530] [139420] [INFO] Starting gunicorn 21.2.0
+[2024-05-06 11:05:49 +0530] [139420] [INFO] Listening at: http://0.0.0.0:8000 (139420)
+[2024-05-06 11:05:49 +0530] [139420] [INFO] Using worker: sync
+[2024-05-06 11:05:49 +0530] [139421] [INFO] Booting worker with pid: 139421
+[2024-05-06 11:05:50 +0530] [139422] [INFO] Booting worker with pid: 139422
+Not Found: /None
+Not Found: /None
+Not Found: /None
+Not Found: /None
+Not Found: /None
+Not Found: /None
+Not Found: /None
+Not Found: /None
+Not Found: /None
+Not Found: /None
+[2024-05-06 11:06:37 +0530] [139420] [INFO] Handling signal: int
+[2024-05-06 11:06:37 +0530] [139421] [INFO] Worker exiting (pid: 139421)
+[2024-05-06 11:06:37 +0530] [139422] [INFO] Worker exiting (pid: 139422)
+[2024-05-06 11:06:37 +0530] [139420] [INFO] Shutting down: Master
+[2024-05-06 11:26:58 +0530] [169513] [INFO] Starting gunicorn 21.2.0
+[2024-05-06 11:26:58 +0530] [169513] [INFO] Listening at: http://0.0.0.0:8000 (169513)
+[2024-05-06 11:26:58 +0530] [169513] [INFO] Using worker: sync
+[2024-05-06 11:26:58 +0530] [169524] [INFO] Booting worker with pid: 169524
+[2024-05-06 11:26:58 +0530] [169525] [INFO] Booting worker with pid: 169525
+Not Found: /None
+Not Found: /None
+Not Found: /None
+Not Found: /None
+[2024-05-06 11:29:07 +0530] [169513] [ERROR] Worker (pid:169524) was sent SIGHUP!
+[2024-05-06 11:29:07 +0530] [169513] [ERROR] Worker (pid:169525) was sent SIGHUP!
+[2024-05-06 11:29:07 +0530] [172988] [INFO] Booting worker with pid: 172988
+[2024-05-06 11:29:07 +0530] [172989] [INFO] Booting worker with pid: 172989
+[2024-05-06 11:29:07 +0530] [169513] [INFO] Handling signal: hup
+[2024-05-06 11:29:07 +0530] [169513] [INFO] Hang up: Master
+[2024-05-06 11:29:07 +0530] [172990] [INFO] Booting worker with pid: 172990
+[2024-05-06 11:29:07 +0530] [172991] [INFO] Booting worker with pid: 172991
+[2024-05-06 11:29:08 +0530] [172988] [INFO] Worker exiting (pid: 172988)
+[2024-05-06 11:29:08 +0530] [172989] [INFO] Worker exiting (pid: 172989)
+[2024-05-06 11:29:08 +0530] [169513] [ERROR] Worker (pid:172989) was sent SIGTERM!
+[2024-05-06 11:33:15 +0530] [169513] [INFO] Handling signal: term
+[2024-05-06 11:33:15 +0530] [172990] [INFO] Worker exiting (pid: 172990)
+[2024-05-06 11:33:15 +0530] [172991] [INFO] Worker exiting (pid: 172991)
+[2024-05-06 11:33:15 +0530] [169513] [ERROR] Worker (pid:172991) was sent SIGTERM!
+[2024-05-06 11:33:15 +0530] [169513] [INFO] Shutting down: Master

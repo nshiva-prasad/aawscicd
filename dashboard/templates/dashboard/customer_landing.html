@@ -1,0 +1,222 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="{% static 'dashboard/images/favicon.ico' %}" type="image/x-icon">
+    <script
+      src="https://kit.fontawesome.com/f7396dff9d.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="{% static 'dashboard/css/customer_landing.css' %}"
+    />
+    <title>Joyful Surprises 🎉🎈</title>
+  </head>
+  <body>
+    {% include 'dashboard/customer_header.html' %}
+    <!-- Circle Options Start -->
+    <div class="categories">
+      {% for circle in circle_data %}
+      <div class="category">
+        <img src="{{ circle.circle_image }}" alt="{{ circle.alt_text }}" />
+        <p>{{ circle.circle_category_name }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- Circle Options End -->
+    <!-- Banner Start -->
+    <div class="banner">
+      <div class="toggle-buttons">
+        <button onclick="showPreviousImage()">&#8249;</button>
+        <button onclick="showNextImage()">&#8250;</button>
+      </div>
+      {% for banner in banner_data %} {% if forloop.first %}
+      <!-- First image loads immediately with 'eager' -->
+      <img
+        src="{{ banner.image }}"
+        alt="{{ banner.alternate_text }}"
+        class="active"
+        loading="eager"
+      />
+      {% else %}
+      <!-- Other images load lazily with 'lazy' -->
+      <img
+        src="{{ banner.image }}"
+        alt="{{ banner.alternate_text }}"
+        loading="eager"
+      />
+      {% endif %} {% endfor %}
+      <!-- Add more images here -->
+    </div>
+    <!-- Banner End -->
+    <!-- Images Below Banner Start -->
+    <div class="image-container">
+      {% for sub_banner_id, sub_banner_data in subbanner.items %}
+      <img
+        src="{{ sub_banner_data.image_url }}"
+        alt="{{ sub_banner_data.alternate_text }}"
+        loading="lazy"
+      />
+      {% endfor %}
+    </div>
+    <!-- Images Below Banner End -->
+    <!-- Find Gifts Faster Start -->
+    <div class="gift-finder">
+      <h2 class="gift-finder-heading">Find Gifts Faster</h2>
+      <div class="gift-finder-row">
+        <select class="occasion-dropdown">
+          <option value="" selected disabled>Select an Occasion</option>
+          <option value="birthday">Birthday</option>
+          <option value="anniversary">Anniversary</option>
+          <option value="wedding">Wedding</option>
+          <option value="graduation">Graduation</option>
+        </select>
+        <select class="gift-type-dropdown">
+          <option value="" selected disabled>Select a Gift Type</option>
+          <option value="electronics">Electronics</option>
+          <option value="clothing">Clothing</option>
+          <option value="books">Books</option>
+          <option value="home-decor">Home Decor</option>
+        </select>
+        <button class="submit-button">Find Gifts</button>
+      </div>
+    </div>
+    <!-- Find Gifts Faster End -->
+    <!-- Grid with left image -type-one start -->
+    <div class="container-type-one">
+      <div class="top-type-one">
+        {% for container_id, container_data in left_container.items %}
+        <div class="name-type-one">{{ container_data.name }}</div>
+        {% endfor %}
+        <button class="view-button-type-one">View All</button>
+      </div>
+      <div class="content-type-one">
+        <div class="left-column-type-one">
+          {% for container_id, container_data in left_container.items %}
+          <img
+            src="{{ container_data.image_url }}"
+            alt="{{ container_data.alternate_text }}"
+            loading="lazy"
+          />
+          {% endfor %}
+        </div>
+        <div class="right-column-type-one">
+          {% for sub_img_id, sub_img_data in left_sub_imgs.items %}
+          <div class="row-type-one">
+            <div class="grid-container-type-one">
+              <img
+                src="{{ sub_img_data.image_url }}"
+                alt="{{ sub_img_data.alternate_text }}"
+                loading="lazy"
+              />
+              <h4 class="text-type-one">{{ sub_img_data.title }}</h4>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!-- Grid with left image -type-one End -->
+    <!-- Mobile extra banner Start -->
+    <div class="mobile-extra-banner">
+      {% for mobile_banner_id, mobile_banner_data in mobilebanner.items %}
+      <img
+        src="{{ mobile_banner_data.image_url }}"
+        alt="{{ mobile_banner_data.alternate_text }}"
+        loading="lazy"
+      />
+      {% endfor %}
+      <!-- Add more images here -->
+    </div>
+    <!-- Mobile extra banner End -->
+    <!-- Grid with right image -type-two start -->
+    <div class="container-type-two">
+      <div class="top-type-two">
+        {% for container_id, container_data in right_container.items %}
+        <div class="name-type-one">{{ container_data.name }}</div>
+        {% endfor %}
+        <button class="view-button-type-two">View All</button>
+      </div>
+      <div class="content-type-two">
+        <div class="left-column-type-two">
+          {% for sub_img_id, sub_img_data in right_sub_imgs.items %}
+          <div class="row-type-one">
+            <div class="grid-container-type-one">
+              <img
+                src="{{ sub_img_data.image_url }}"
+                alt="{{ sub_img_data.alternate_text }}"
+                loading="lazy"
+              />
+              <h4 class="text-type-one">{{ sub_img_data.title }}</h4>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="right-column-type-two">
+          {% for container_id, container_data in right_container.items %}
+          <img
+            src="{{ container_data.image_url }}"
+            alt="{{ container_data.alternate_text }}"
+            loading="lazy"
+          />
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!-- Grid with right image -type-two end -->
+    <!-- Best Selling Grid Start -->
+    <div class="container-best-selling">
+      <div class="header-best-selling">
+        <h2>Best Selling Gifts</h2>
+      </div>
+      <div class="grid">
+        <div class="grid-item">
+          <img src="/static/dashboard/images/product-banner.jpg" alt="Image 1" />
+          <p>Text 1</p>
+        </div>
+        <div class="grid-item">
+          <img src="/static/dashboard/images/product-banner.jpg" alt="Image 2" />
+          <p>Text 2</p>
+        </div>
+        <div class="grid-item">
+          <img src="/static/dashboard/images/product-banner.jpg" alt="Image 3" />
+          <p>Text 3</p>
+        </div>
+        <div class="grid-item">
+          <img src="/static/dashboard/images/product-banner.jpg" alt="Image 4" />
+          <p>Text 4</p>
+        </div>
+        <div class="grid-item">
+          <img src="/static/dashboard/images/product-banner.jpg" alt="Image 5" />
+          <p>Text 5</p>
+        </div>
+        <div class="grid-item">
+          <img src="/static/dashboard/images/product-banner.jpg" alt="Image 6" />
+          <p>Text 6</p>
+        </div>
+        <div class="grid-item">
+          <img src="/static/dashboard/images/product-banner.jpg" alt="Image 7" />
+          <p>Text 7</p>
+        </div>
+        <div class="grid-item">
+          <img src="/static/dashboard/images/product-banner.jpg" alt="Image 8" />
+          <p>Text 8</p>
+        </div>
+        <div class="grid-item">
+          <img src="/static/dashboard/images/product-banner.jpg" alt="Image 9" />
+          <p>Text 9</p>
+        </div>
+        <div class="grid-item">
+          <img src="/static/dashboard/images/product-banner.jpg" alt="Image 10" />
+          <p>Text 10</p>
+        </div>
+      </div>
+    </div>
+    <!-- Best Selling Grid End -->
+  </body>
+  {% include 'dashboard/customer_footer.html' %}
+</html>
+<script src="{% static 'dashboard/js/customer_landing.js' %}"></script>

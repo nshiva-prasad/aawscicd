@@ -1,0 +1,568 @@
+/* Prevent horizontal scroll */
+body {
+  overflow-x: hidden;
+  margin: 5px;
+}
+
+/* Customize vertical scroll */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #2e3368; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f15050;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #27a302;
+}
+
+/* ********* Style for  circle options ******** */
+
+.category {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.category-title {
+  border-bottom: 1px solid rgb(168, 164, 164);
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-right: 50px;
+}
+
+.categories {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 5px 0px; /* Adjust the desired amount of space */
+  scrollbar-width: none; /* Hide the scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide the scrollbar for IE and Edge */
+}
+
+.categories::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.categories:hover {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.categories:hover::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.categories:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+
+.categories:hover::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.category {
+  display: inline-block;
+  margin-right: 40px;
+  margin-left: 40px;
+  text-align: center;
+}
+
+.category img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.product {
+  margin-bottom: 20px;
+}
+
+/* banner styling */
+.banner {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  height: auto;
+  margin: 0 auto;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.banner img {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+
+.banner img.active {
+  display: block;
+}
+.mobile-extra-banner {
+  display: none;
+}
+.toggle-buttons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.toggle-buttons button {
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+}
+
+/* Images below banner style */
+.image-container {
+  position: relative;
+  width: 100%;
+  display: flex; /* Display the images in a row */
+  overflow: hidden;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.image-container img {
+  width: 33.33%; /* Set each image to take up one-third of the container */
+  height: auto; /* Maintain the aspect ratio of the images */
+  margin-right: 5px;
+}
+
+/* Find Gifts Faster Style */
+.gift-finder {
+  padding: 1px;
+  background-color: #2e3368;
+  text-align: center;
+}
+.gift-finder h2 {
+  margin: 0px;
+}
+.gift-finder-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.gift-finder-row {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.occasion-dropdown,
+.gift-type-dropdown {
+  flex-grow: 2;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-right: 20px; /* Add margin-right for spacing */
+  margin-left: 20px; /* Add margin-right for spacing */
+}
+
+.submit-button {
+  flex-grow: 1;
+  background-color: #fc7488;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+/* Grid with left image for -type-one style */
+
+.top-type-one {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.name-type-one {
+  font-size: 200%;
+  font-weight: bold;
+}
+
+.view-button-type-one {
+  color: #ffffff;
+  background-color: #2e3368;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 40px;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.content-type-one {
+  display: grid;
+  grid-template-columns: 0.9fr 1.7fr;
+  grid-gap: 20px;
+}
+
+.left-column-type-one {
+  width: 100%;
+  height: 100%;
+  max-height: 973.09px;
+  border-radius: 5px;
+}
+.left-column-type-one img {
+  width: 100%;
+  height: 100%;
+  max-height: 973.09px;
+  border-radius: 5px;
+}
+
+.right-column-type-one {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  grid-template-rows: repeat(2, minmax(150px, 1fr));
+  grid-gap: 24px 13px;
+}
+
+.row-type-one {
+  background-color: #f5dddd;
+  border-radius: 5px;
+}
+
+.grid-container-type-one {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.grid-container-type-one img {
+  width: 100%;
+  height: auto;
+  min-width: 150.81px;
+  max-width: fit-content;
+  min-height: 150.81px;
+  max-height: fit-content;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+/* Grid with left image for -type-two style */
+
+.top-type-two {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.name-type-two {
+  font-size: 200%;
+  font-weight: bold;
+}
+
+.view-button-type-two {
+  color: #ffffff;
+  background-color: #2e3368;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 40px;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.content-type-two {
+  display: grid;
+  grid-template-columns: 1.7fr 0.9fr;
+  grid-gap: 20px;
+}
+
+.right-column-type-two img {
+  width: 100%;
+  height: 100%;
+  max-width: fit-content;
+  max-height: 973.09px;
+  border-radius: 5px;
+}
+
+.left-column-type-two {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  grid-template-rows: repeat(2, minmax(150px, 1fr));
+  grid-gap: 24px 13px;
+}
+
+.row-type-two {
+  background-color: #f5dddd;
+  border-radius: 5px;
+}
+
+.grid-container-type-two {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+.grid-container-type-two img {
+  width: 100%;
+  height: auto;
+  min-width: 150.81px;
+  max-width: fit-content;
+  min-height: 150.81px;
+  max-height: fit-content;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+/* Best Selling Gird Style */
+.container-best-selling {
+  max-width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+}
+
+.grid-item {
+  text-align: center;
+  background-color: #f5dddd;
+  border-radius: 5px;
+}
+
+.grid-item img {
+  max-width: 100%;
+  height: auto;
+}
+.grid-item img {
+  border-top-right-radius: 5px; /* Apply border radius to image and text within each cell */
+  border-top-left-radius: 5px; /* Apply border radius to image and text within each cell */
+  overflow: hidden; /* Ensure content inside each cell respects the border radius */
+}
+
+.grid-item p {
+  color: #000000;
+}
+
+/* **************** Media query for mobile devices **************** */
+
+@media (max-width: 767px) {
+  /* body */
+  body {
+    overflow-x: hidden;
+  }
+  /* Hide or Show find gifts faster */
+  /* .gift-finder{
+    display: none;
+  } */
+  /* Toggle Resize */
+  .toggle-buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .toggle-buttons button {
+    width: 10px;
+    height: 20px;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+  }
+  /* Remove left-column-type-one and left-column-type-two */
+  .left-column-type-one,
+  .right-column-type-two {
+    display: none;
+  }
+  /* Set grid ONE  */
+  .content-type-one {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 45px;
+  }
+  .right-column-type-one {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .top-type-one {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .row-type-one h4 {
+    display: flex;
+    justify-content: center;
+    background-color: #f5dddd;
+    border-radius: 5px;
+    margin: 5px;
+  }
+  /* Set grid TWO  */
+  .content-type-two {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 45px;
+  }
+  .left-column-type-two {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 12px 7px;
+  }
+  .top-type-two {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .row-type-two h4 {
+    display: flex;
+    justify-content: center;
+    background-color: #f5dddd;
+    border-radius: 5px;
+    margin: 5px;
+  }
+  /* Best Selling Gifts */
+  .grid-item img {
+    width: 100%;
+    height: 80%;
+  }
+  .grid-item p {
+    margin: 0px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5px;
+  }
+
+  /* Categories */
+  .categories {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px;
+    width: 160px; /* Adjust this width as needed to maintain even spacing */
+  }
+  
+  .category img {
+    width: 60px; /* Ensure images fill the container horizontally */
+    height: 60px; /* Maintain aspect ratio */
+  }
+  
+  .category p {
+    align-items: end;
+    margin-top: 2px; /* Remove default margin to avoid extra spacing */
+    margin-bottom: 2px;
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
+
+  /* Find Gift Faster */
+  .occasion-dropdown,
+  .gift-type-dropdown {
+    flex-grow: 1;
+    padding: 5px;
+    font-size: 10px;
+    border-radius: 5px;
+    margin-right: 0px; /* Add margin-right for spacing */
+    margin-left: 10px; /* Add margin-right for spacing */
+  }
+  .submit-button {
+    flex-grow: 0.5;
+    background-color: #fc7488;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+  /* Hide 3rd image in mobile view */
+  .image-container img:nth-child(n + 3) {
+    display: none; /* Hide images starting from the third image */
+  }
+  .image-container img {
+    width: 50%; /* Set each image to take up one-third of the container */
+    height: auto; /* Maintain the aspect ratio of the images */
+    margin-right: 5px;
+  }
+
+  /* Scroll bar design for the header hamburger */
+  /* Hide the scrollbar for webkit-based browsers */
+  body {
+    overflow-x: hidden;
+    margin: 1px;
+  }
+  .hamburger-menu-content::-webkit-scrollbar {
+    width: 2px; /* Adjust the width to make the scrollbar smaller */
+  }
+
+  .hamburger-menu-content::-webkit-scrollbar-track {
+    background: #2e3368;
+  }
+
+  .hamburger-menu-content::-webkit-scrollbar-thumb {
+    background: #f15050;
+  }
+
+  .hamburger-menu-content::-webkit-scrollbar-thumb:hover {
+    background: #27a302;
+  }
+  /* Mobile Extra Banner Style */
+  .mobile-extra-banner {
+    display: block;
+  }
+  .mobile-extra-banner {
+    position: relative;
+    width: 100%;
+    max-width: 1920px;
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+  .mobile-extra-banner img {
+    width: 100%;
+    height: auto;
+    margin-top: 5px;
+  }
+}

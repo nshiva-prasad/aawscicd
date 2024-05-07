@@ -1,0 +1,246 @@
+# Logging Level Configurations
+
+import rich.theme
+from rich.logging import RichHandler
+
+from rich.traceback import install
+
+install()
+
+my_theme = rich.theme.Theme({
+    "logging.level.info": "bold magenta",
+    "logging.level.debug": "green",
+    "logging.level.warning": "yellow",
+    "logging.level.error": "bold red",
+    "logging.level.critical": "bold red",
+})
+rich.reconfigure(theme=my_theme)
+
+rich_handler = RichHandler(
+    show_level=True,
+    show_path=False,
+)
+
+HOST_NAME = config('HOST_NAME', 'http://127.0.0.1:8000')
+LOG_LEVEL = config('LOG_LEVEL', default='INFO')
+
+FORMATTERS = (
+    {
+        "verbose": {
+            "format": "{levelname} {asctime} {name}.{lineno}:{funcName} {message}",
+            "style": "{",
+        },
+        "simple": {
+            "format": "{levelname} {asctime} {name}.{lineno}:{funcName} {message}",
+            "style": "{",
+        },
+    },
+)
+
+HANDLERS = {
+    "console_handler": {
+        "class": "rich.logging.RichHandler",
+        "formatter": "simple",
+    },
+    "debug_handler": {
+        "class": "logging.handlers.RotatingFileHandler",
+        "filename": f"{BASE_DIR}/logs/debug.log",
+        "mode": "a",
+        "encoding": "utf-8",
+        "formatter": "verbose",
+        "backupCount": 2,
+        "maxBytes": 1024 * 1024 * 5,  # 5 MB
+    },
+    "info_handler": {
+        "class": "logging.handlers.RotatingFileHandler",
+        "filename": f"{BASE_DIR}/logs/info.log",
+        "mode": "a",
+        "encoding": "utf-8",
+        "formatter": "verbose",
+        "backupCount": 2,
+        "maxBytes": 1024 * 1024 * 5,  # 5 MB
+    },
+    "warning_handler": {
+        "class": "logging.handlers.RotatingFileHandler",
+        "filename": f"{BASE_DIR}/logs/warning.log",
+        "mode": "a",
+        "encoding": "utf-8",
+        "formatter": "verbose",
+        "backupCount": 2,
+        "maxBytes": 1024 * 1024 * 5,  # 5 MB
+    },
+    "error_handler": {
+        "class": "logging.handlers.RotatingFileHandler",
+        "filename": f"{BASE_DIR}/logs/error.log",
+        "mode": "a",
+        "encoding": "utf-8",
+        "formatter": "verbose",
+        "backupCount": 2,
+        "maxBytes": 1024 * 1024 * 5,  # 5 MB
+    },
+    "critical_handler": {
+        "class": "logging.handlers.RotatingFileHandler",
+        "filename": f"{BASE_DIR}/logs/critical.log",
+        "mode": "a",
+        "encoding": "utf-8",
+        "formatter": "verbose",
+        "backupCount": 2,
+        "maxBytes": 1024 * 1024 * 5,  # 5 MB
+    },
+}
+
+LOGGERS = (
+    {
+        "django": {
+            "handlers": ["console_handler", "debug_handler", "info_handler", "warning_handler", "error_handler", "critical_handler"],
+            "level": "INFO",
+            "propagate": True,
+        },
+        "django.request": {
+            "handlers": ["console_handler", "debug_handler", "info_handler", "warning_handler", "error_handler", "critical_handler"],
+            "level": "INFO",
+            "propagate": True,
+        },
+        "django.template": {
+            "handlers": ["console_handler", "debug_handler", "info_handler", "warning_handler", "error_handler", "critical_handler"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
+        "django.server": {
+            "handlers": ["console_handler", "debug_handler", "info_handler", "warning_handler", "error_handler", "critical_handler"],
+            "level": "INFO",
+            "propagate": True,
+        },
+        "accounts.cron": {
+            "handlers": ["console_handler", "debug_handler", "info_handler", "warning_handler", "error_handler", "critical_handler"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+)
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": FORMATTERS[0],
+    "handlers": HANDLERS,
+    "loggers": LOGGERS[0],
+}
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "rich": {"datefmt": "[%X]"},
+    },
+    "handlers": {
+        "console_info": {
+            "class": "rich.logging.RichHandler",
+            "formatter": "rich",
+            "level": "INFO",
+            "rich_tracebacks": True,
+            "tracebacks_show_locals": False,
+        },
+        "console_error": {
+            "class": "rich.logging.RichHandler",
+            "formatter": "rich",
+            "level": "DEBUG",
+            "rich_tracebacks": True,
+            "tracebacks_show_locals": False,
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console_info", "console_error"],
+            "level": "DEBUG",
+            'propagate': False,
+        },
+    },
+    "root": {
+        "handlers": ["console_info", "console_error"],
+        "level": "INFO",
+    },
+}
+
+=================================================================================================================
+
+HOST_NAME = config('HOST_NAME', 'http://127.0.0.1:8000')
+LOG_LEVEL = config('LOG_LEVEL', default='INFO')
+
+import logging
+import time
+import inspect
+
+class ExceptionFilter(logging.Filter):
+    def filter(self, record):
+        return record.levelno != logging.DEBUG or 'Exception while resolving variable' in record.getMessage()
+    
+class CustomFormatter(logging.Formatter):
+    def formatTime(self, record, datefmt=None):
+        created = record.created
+        milliseconds = int((created - int(created)) * 1000)
+        ct = self.converter(created)
+        t = time.strftime("%Y-%m-%d %H:%M:%S", ct)
+        return "%s:%03d" % (t, milliseconds)
+    
+    def format(self, record):
+        stack = inspect.stack()
+        file_line = "Unknown file and line"
+
+        app_patterns = ['accounts']
+
+        for frame in stack:
+            for pattern in app_patterns:
+                if pattern in frame.filename:
+                    file_line = f"{frame.filename}:{frame.lineno}"
+                    break
+
+        if 'accounts/views.py' in file_line:
+            record.file_line = file_line
+        else:
+            caller_frame = stack[-1]
+            file_line = f"{caller_frame.filename}:{caller_frame.lineno}"
+            record.file_line = file_line
+
+        return super().format(record)
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'rich.logging.RichHandler',
+            'formatter': 'custom',
+            'filters': ['exception_only'],
+            "rich_tracebacks": True,
+        },
+    },
+    'filters': {
+        'exception_only': {
+            '()': ExceptionFilter,
+        },
+    },
+    'formatters': {
+        'custom': {
+            '()': CustomFormatter,
+            'format': '{asctime} // {name} | {funcName} || {file_line}: {message}',
+            'style': '{',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    },
+}

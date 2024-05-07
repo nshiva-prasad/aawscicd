@@ -1,0 +1,208 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("images/register-image.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.centered-container {
+  display: flex;
+}
+
+.left-div,
+.right-div {
+  width: 400px;
+  height: 750px;
+  padding: 20px;
+}
+
+.left-div {
+  background-color: white;
+}
+
+.right-div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-div img {
+  max-width: 100%;
+  height: 8%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+#full_name,
+#email,
+#phone,
+#password1,
+#password2 {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.button-container button {
+  width: 195px;
+  height: 30px;
+  border: none;
+  border-radius: 4px;
+  padding: 0px;
+  background-color: hsl(187, 95%, 37%);
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button-container button:hover {
+  background-color: #127443;
+}
+
+.logout-btn {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logout-btn a {
+  color: inherit;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.button-container a,
+#submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-div img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.alert-info p,
+.alert-danger p {
+  margin: 5px;
+}
+
+.alert-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  padding-right: 5px;
+  margin-bottom: 0px;
+  border: 1px solid #bee5eb;
+  border-radius: 5px;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding-right: 5px;
+  margin-bottom: 0px;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+}
+.social-icons {
+  margin-top: 20px;
+}
+
+.social-icons p,
+.contact-icons p {
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.social-icons img,
+.contact-icons img {
+  display: inline-block;
+  width: 30px;
+  height: auto;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+a {
+  text-decoration: none;
+}
+
+/* Mobile View Configuration */
+
+@media (max-width: 768px) {
+  .centered-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .right-div {
+    display: none;
+  }
+
+  .left-div {
+    width: 300px;
+    height: 740px;
+    padding: 10px;
+  }
+
+  .button-container button {
+    flex: 1;
+    margin-top: 0px;
+    margin-right: 10px;
+    text-align: center;
+    padding: 10px 20px;
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'accounts/images/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'accounts/css/otp_verify.css' %}"  />
+    <title>Submit OTP</title>
+</head>
+<body>
+    <div class="centered-div">
+        <h1>Submit OTP</h1>
+        <p>Enter the latest OTP recieved on your registered email.</p>
+        {% if messages %} {% for message in messages %}
+            <div class="alert-info">{{ message }}</div>
+            {% endfor %} {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <label for="text">Enter OTP:</label>
+            <input type="text" id="text" name="otp_code" placeholder="XXXXXX"/>
+            <div class="button-container">
+                <button id="submit" type="submit">Submit OTP</button>
+                <button>
+                    <a href="{% url 'resend_otp' email_or_phone %}" class="logout-btn" style="text-decoration: none;">Resend OTP</a>
+                </button>
+            </div>
+            <div class="button-container" id="loginpassword">
+                <button>
+                    <a href="{% url 'login' %}" class="logout-btn" style="text-decoration: none;">Login With Password Instead</a>
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

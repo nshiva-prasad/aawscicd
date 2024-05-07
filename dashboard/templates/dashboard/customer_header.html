@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'dashboard/css/header.css' %}" />
+  <script
+    src="https://kit.fontawesome.com/f7396dff9d.js"
+    crossorigin="anonymous"
+  ></script>
+</head>
+<html>
+  <header>
+    <!-- Header-Top start -->
+    <div class="header-top">
+      <span class="left-span" id="location"
+        ><i class="fa-sharp fa-solid fa-location-dot"></i>
+      </span>
+      <span class="left-span"
+        ><i class="fa-solid fa-grip-lines-vertical"></i>
+      </span>
+      <span class="left-span"
+        ><a href="tel:+919966558383"
+          ><i class="fa-solid fa-phone">&nbsp;</i>+919966558383</a
+        ></span
+      >
+      <span class="left-span"
+        ><i class="fa-solid fa-grip-lines-vertical"></i>
+      </span>
+      <span class="left-span"
+        ><a
+          href="https://api.whatsapp.com/send?phone=919966558383"
+          target="_blank"
+          ><i class="fa-brands fa-whatsapp">&nbsp;</i>+919966558383</a
+        ></span
+      >
+      {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}" class="right-span">Logout</a>
+      {% else %}
+      <a href="{% url 'login' %}" class="right-span">Login</a>
+      {% endif %}
+    </div>
+    <!-- Header-Top end -->
+    <!-- Header Start -->
+    <div class="header">
+      <div class="logo">
+        <img src="/static/dashboard/images/logo.png" alt="Logo" />
+      </div>
+      <div class="search">
+        <!-- Search content here -->
+        <div class="hamburger-menu"><i class="fa-solid fa-bars"></i></div>
+        <input type="text" class="search-input" placeholder="Find Gifts" />
+        <button type="submit" class="search-button">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      <div class="user-section">
+        <div class="wishlist">
+          <i class="fa-regular fa-heart"></i>
+        </div>
+        <div class="cart">
+          <!-- Cart content here -->
+          <img src="/static/dashboard/images/add_to_cart.png" alt="Cart" />
+        </div>
+        <div class="user-logo">
+          <img src="/static/dashboard/images/user_logo.png" alt="User Logo" />
+        </div>
+      </div>
+    </div>
+    <!-- Drop Down Content Start -->
+    <div class="dropdown">
+      {% for superCategory in drop_down_data.super_categories %}
+        {% if superCategory.is_active %}
+        <div class="item">
+          <p>{{ superCategory.name }} <i class="fa-solid fa-caret-down"></i></p>
+          <div class="dropdown-options">
+            <div class="options-container">
+              <div class="data-container">
+                <div class="options-left">
+                  {% for category in superCategory.categories %}
+                    <div class="dropdown-category">
+                      <p class="dropdown-category-title">{{ category.name }}</p>
+                      <ul class="category-list">
+                        {% for subCategory in category.sub_categories %}
+                        <li class="subcategory-item" data-subcategory="{{ subCategory.name }}">{{ subCategory.name }}</li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  {% endfor %}
+                </div>
+                <div class="options-right">
+                  <img src="{{ superCategory.image_url }}" alt="Image" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          {% endif %}
+        {% endfor %}
+      <!-- Add more items here -->
+    </div>
+    <!-- Drop Down Content End -->
+    <!-- Hamburger Menu Content Start -->
+    <!-- The hamburger menu content -->
+    <div class="hamburger-menu-container">
+      <div class="hamburger-menu-content">
+        <div class="close-mark"><i class="fa-solid fa-xmark"></i></div>
+        {% for superCategory in drop_down_data.super_categories %}
+        {% if superCategory.is_active %}
+        <div class="ham-item">
+          <div class="ham-item-name">
+            {{ superCategory.name }}
+            <i id="plus" class="fa-solid fa-plus"></i>
+            <i id="minus" class="fa-solid fa-minus"></i>
+          </div>
+          <div class="ham-dropdown-options">
+            {% for category in superCategory.categories %}
+            <div class="ham-category">
+              <p class="ham-category-title">{{ category.name }}</p>
+              {% if category.sub_categories %}
+              <ul class="ham-options">
+                {% for subCategory in category.sub_categories %}
+                  <li>{{ subCategory.name }}</li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </div>
+            {% endfor %}
+            <div class="ham-image">
+              <img src="{{ superCategory.image_url }}" alt="Image" loading="lazy" />
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <!-- Hamburger Menu Content End -->
+    <!-- Header End -->
+  </header>
+</html>
+<script src="{% static 'dashboard/js/header.js' %}"></script>

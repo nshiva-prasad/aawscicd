@@ -1,0 +1,477 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 5px;
+  padding: 0;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.product-section {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.container{
+  display: none;
+}
+
+.img-section {
+  flex: 0 0 45%;
+  position: sticky;
+  top: 20px;
+  padding-right: 20px;
+  margin-top: 2%;
+  width: fit-content;
+  height: 600px;
+}
+.main-image-container{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.thumbnail-images{
+  display: flex;
+  flex: 30%;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 10px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.thumbnail-images::-webkit-scrollbar {
+  display: none;
+}
+
+.thumbnail-images img {
+  max-width: 45%;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+.largeImage-container{
+  flex: 70%;
+}
+.largeImage-container img{
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 5px;
+}
+.description-section {
+  flex: 1;
+}
+
+/* Add any additional styling as per your requirement */
+
+/* Apply underline to h2 and h4 elements */
+h1,h2,h3{
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.description-section{
+  margin-top: 10px;
+  max-width: 80%;
+  max-height: 100%;
+}
+.detail-info{
+  max-width: 80%;
+  max-height: 100%;
+}
+.add-to-cart {
+  color: white;
+  padding: 16px 50px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  background-color: #2e3368;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.buy-now {
+  color: white;
+  padding: 16px 50px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  background-color: #2e3368;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.buy-now:hover,
+.add-to-cart:hover {
+  background-color: #22b7eb;
+}
+
+/* Price Tag Style */
+.price-tag {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.rupee {
+  font-size: 40px;
+}
+
+.discounted-price {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.actual-price {
+  font-size: 18px;
+  text-decoration: line-through;
+  color: #888; /* Optional: Add a different color for the struck-off price */
+}
+.discount-percentage {
+  font-size: 25px;
+  color: #f00f26;
+}
+.discount-off{
+  font-size: 20px;
+  color: #f00f26;
+}
+
+/* ********** Product Grid ************ */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  row-gap: 30px;
+}
+
+.product-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.best-seller-tag {
+  position: absolute;
+  top: 22px;
+  left: -14px;
+  transform: rotate(-45deg);
+  background-color: #ff9800;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.product-image input[type="range"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.product-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-out;
+}
+
+.product-image input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #ff9800;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.product-image input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background-color: #ff9800;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.product-price,
+.actual-price {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.favorite-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px; 
+}
+
+.action-buttons {
+  display: flex;
+  margin-top: 5px;
+  margin-right: 5px;
+  justify-content: space-around; /* Center align the buttons */
+}
+
+.action-buttons .action-cart,
+.action-buttons .action-buy {
+  padding: 10px 20px;
+  background-color: #2e3368;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.flash-card {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  background-color: #f00f26;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 4px;
+  z-index: 9999;
+  animation: flash-card-appear 0.3s ease-out;
+}
+
+/* Product Preview */
+#preview-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.preview-image-container {
+  position: relative;
+  margin: 5px;
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+}
+
+.fa-xs {
+  position: absolute;
+  line-height: 0.6em;
+  top: 0;
+  right: 0;
+  width: 20px; /* Adjust the width of the remove icon */
+  height: 20px; /* Adjust the height of the remove icon */
+  text-align: end;
+  cursor: pointer;
+}
+
+ /* Form styling */
+/* General styling for labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Style for text inputs and color pickers */
+textarea {
+  display: inline-block;
+  width: 400px;
+  height: 100px; /* You can adjust the initial height as needed */
+  padding: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  resize: vertical; /* This allows the textarea to grow vertically */
+}
+
+input[type="color"] {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* Style for date picker */
+input[type="date"] {
+  display: inline-block;
+  width: 200px;
+  padding: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+/* Style for image upload input */
+input[type="file"] {
+  display: inline-block;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+/* Adjust the position of color pickers to align with text inputs */
+input[type="color"] {
+  margin-top: 7px;
+}
+
+/* Adjust the position of the date picker */
+input[type="date"] {
+  margin-top: 7px;
+}
+
+/* Styling for the submit button */
+input[type="submit"] {
+  display: block;
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* ################################################## */
+/* CSS for the custom image preview container */
+.custom-image-preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-right: 10px;
+}
+
+/* CSS for the preview image */
+.custom-image-preview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 5px;
+  position: relative;
+}
+
+/* CSS for the 'x' symbol */
+.custom-image-remove {
+  position: relative;
+  bottom: 110px;
+  left: 85px;
+  width: 20px;
+  height: 20px;
+  margin: 0px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1;
+}
+
+
+
+/* Mobile View */
+@media (max-width: 767px) {
+  body {
+    font-family: Arial, sans-serif;
+    margin: 1px;
+    padding: 0;
+  }
+.product-grid {
+    display: none;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5px;
+}
+.product-section{
+  display:none
+}
+
+.container {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+.slideshow img{
+  width: 100%;
+  height: 100%;
+}
+.first {
+  position: sticky;
+  top: 0;
+  background-color: #f5f5f5;
+  max-height: 371px;
+  overflow: hidden;
+  padding: 1px;
+  z-index: 1;
+}
+.second-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.second {
+  position: relative;
+  background-color: #ffffff;
+  padding: 1px;
+  z-index: 2;
+  overflow-y: auto; /* Height minus padding of first and second divs */
+}
+
+.third {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  background-color: #f5f5f5;
+  padding: 1px;
+  width: 100%;
+  max-height: 45px;
+  z-index: 3;
+}
+
+/* Buy and add to card style */
+.add-to-cart {
+  flex: 60%;
+  padding: 10px;
+}
+
+.buy-now {
+  flex: 40%;
+  padding: 10px;
+}
+.add-to-cart {
+  color: white;
+  border: none;
+  margin: 0px;
+  cursor: pointer;
+  background-color: #2e3368;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.buy-now {
+  color: white;
+  border: none;
+  margin-right: 3px;
+  cursor: pointer;
+  background-color: #2e3368;
+  border-radius: 5px;
+  font-size: 12px;
+}
+}

@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+/*  ****** Header top style ********* */
+.hamburger-menu-content,
+.hamburger-menu {
+  display: none;
+}
+
+/* Style for the header-top div */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+/* Style for the left spans */
+.left-span {
+  margin-right: 10px;
+}
+
+/* Style for the right span */
+.right-span {
+  font-family: 'Roboto', sans-serif;
+  margin-right: 0;
+  margin-left: auto;
+  background-color: #2e3368;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.right-span:hover {
+  background-color: #22b7eb;
+}
+
+/* Style for the anchor tag */
+.left-span a {
+  color: black;
+  text-decoration: none;
+}
+
+.left-span a:hover {
+  color: #22b7eb;
+  text-decoration: none;
+}
+
+/* ****** Style for the logo div ***** */
+.header {
+  display: flex;
+  height: auto;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+/* Define the styles for the logo */
+.logo {
+  width: 205px;
+  height: 63px;
+  overflow: hidden;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+.search-input {
+  font-weight: bold;
+  width: 500px; /* Set the desired width */
+  height: 30px; /* Set the desired height */
+  padding: 3px; /* Adjust the padding as desired */
+}
+
+.search-button {
+  color: #ffffff;
+  background-color: #2e3368;
+  border: 1px solid #2e3368; /* Customize the border style */
+  padding: 5px; /* Adjust the padding as desired */
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1px;
+}
+
+.search-button i {
+  vertical-align: middle; /* Adjust the vertical alignment of the icon */
+  line-height: 1; /* Reset the line height to 1 */
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+}
+
+.wishlist,
+.cart,
+.user-logo {
+  padding: 10px;
+}
+
+.wishlist,
+.cart {
+  font-size: 25px;
+  flex: 1;
+}
+
+.user-logo {
+  flex-shrink: 0;
+}
+
+.user-logo img {
+  width: 30px; /* Adjust the desired image size */
+  height: 30px; /* Adjust the desired image size */
+  object-fit: cover;
+}
+
+.cart img {
+  width: 30px; /* Adjust the desired image size */
+  height: 30px; /* Adjust the desired image size */
+  object-fit: cover;
+}
+
+.item i {
+  margin-left: 5px;
+}
+
+/* ****** Style for drop down ****** */
+.dropdown {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #2e3368;
+  color: #ffffff;
+}
+.item {
+  position: relative;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.options-container {
+  display: none;
+}
+.item p{
+  margin: 0px;
+}
+.item:hover {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.item:hover .options-container {
+  background-color: #f5dddd;
+  width: 96vw;
+  height: auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0px;
+  position: fixed;
+  top: 165px;
+  left: 0;
+}
+
+.data-container{
+  display: flex;
+  width: 96vw;
+  height: auto;
+}
+
+.dropdown-category-title{
+  margin: 0px;
+  font-weight: bold;
+}
+.options-left {
+  flex: 70%;
+  margin: 1%;
+  display: flex;
+  justify-content: flex-start;
+}
+.options-right {
+  flex: 30%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.options-right img {
+  margin: 10px;
+  max-width: 80%;
+  height: auto;
+}
+
+.dropdown-category {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+.dropdown-category h2 {
+  margin-bottom: 0px;
+}
+
+.category-list {
+  list-style-type: none; /* Remove the dot in front of list items */
+  padding-left: 0; /* Remove the default left padding of the list */
+}
+
+.category-list li {
+  margin-bottom: 10px; /* Add spacing between list items */
+}
+
+
+/* Increase spacing between list items */
+.dropdown-category ul.category-list li {
+  margin-bottom: 20px; /* Adjust the desired spacing between each li */
+  position: relative; /* Required for positioning the ::before element */
+}
+
+/* Underline animation on hover */
+.dropdown-category ul.category-list li::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #22b7eb; /* Adjust the color of the underline */
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0); /* Initially hide the underline with scaleX(0) */
+  transform-origin: left; /* Set the origin of the transform to the left */
+  transition: transform 0.2s ease-in-out; /* Apply transition to the transform property */
+}
+
+.dropdown-category ul.category-list li:hover::before {
+  width: 100%; /* This will create the left-to-right animation effect */
+  transform: scaleX(1); /* Show the underline by scaling it horizontally to full width */
+}
+
+
+
+/* ******* Mobile View Styling ******* */
+
+@media (max-width: 768px) {
+  /* Hide the header-top */
+  .dropdown,
+  .header-top {
+    display: none;
+  }
+
+  /* Header Style */
+  .header {
+    flex-wrap: wrap;
+    padding: 0px;
+    margin-bottom: 5px;
+  }
+  .user-logo,
+  .wishlist,
+  .cart {
+    padding: 5px;
+    margin-right: 0px;
+    font-size: 25px;
+  }
+  .search {
+    justify-content: stretch;
+    align-items: stretch;
+    order: 1; /* Move search to the top */
+  }
+
+  .search-input {
+    font-weight: bold;
+    width: calc(100% - 95px);
+    height: 30px;
+    padding: 3px;
+  }
+  /* Individual Style */
+  .logo img {
+    width: 60%;
+    height: 80%;
+    object-fit: contain;
+    align-self: flex-end;
+  }
+
+  /* hamburger-menu style */
+  .hamburger-menu {
+    color: #ffffff;
+    display: block;
+    background-color: #2e3368;
+    border: 1px solid #2e3368;
+    padding: 5px;
+    height: 28px;
+    width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1px;
+    margin-left: 8px;
+  }
+  /* Hamburger Content */
+
+  /* Add a container for the hamburger menu */
+  .hamburger-menu-container {
+    position: relative;
+  }
+  .ham-dropdown-options {
+    display: none;
+  }
+  .ham-category p{
+    margin: 0px;
+    text-align: start;
+  }  
+  /* Styles for the hamburger menu content */
+  .hamburger-menu-content {
+    position: absolute;
+    top: 0;
+    left: 35%;
+    transform: translateX(-50%);
+    width: 65%;
+    max-height: calc(
+      100vh - 68px
+    ); /* Adjust to leave space for the margin-top */
+    background-color: #ffffff;
+    color: #000000;
+    transition: left 0.3s ease-in-out;
+    z-index: 2;
+    padding: 10px;
+    margin-top: -45px;
+    /* border: 1px double #000000; Add the border property */
+
+    /* Enable vertical scrolling and hide the horizontal scrollbar */
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    /* Hide the scrollbar for webkit-based browsers */
+  }
+  .close-mark {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+
+  .hamburger-menu-content.show {
+    left: 0;
+  }
+
+  .fa-bars,
+  .fa-xmark {
+    font-size: 24px;
+  }
+  /* Managing Hamburger Animation */
+  .ham-item-name {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f5dddd;
+    cursor: pointer;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+
+  .ham-category-list {
+    display: none;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+  }
+
+  .ham-category {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .ham-category-title {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 0px;
+  }
+
+  .ham-options {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+  }
+
+  .ham-options li {
+    display: block;
+    padding: 5px 0;
+  }
+
+  .ham-image img {
+    max-width: 100%;
+    max-height: 100%;
+    margin-top: 10px;
+    object-fit: contain;
+  }
+}

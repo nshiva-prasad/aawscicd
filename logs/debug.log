@@ -1,0 +1,7 @@
+INFO - 2024-03-03 10:28:25:583 // celery.worker.control | hello || /home/shiva/Desktop/Project/joyfulsurprises/.venv/bin/celery:8: sync with worker1@shiva-desktop
+INFO - 2024-03-03 10:35:05:450 // celery.worker.strategy | task_message_handler || /home/shiva/Desktop/Project/joyfulsurprises/.venv/bin/celery:8: Task accounts.tasks.serve_home_page[68964536-159d-432a-87cb-191dda8fdded] received
+INFO - 2024-03-03 10:35:05:461 // accounts.tasks | serve_home_page || /home/shiva/Desktop/Project/joyfulsurprises/accounts/tasks.py:9: Celery ===============    Info message: Home page accessed
+WARNING - 2024-03-03 10:35:05:478 // accounts.tasks | serve_home_page || /home/shiva/Desktop/Project/joyfulsurprises/accounts/tasks.py:10: Celery ===============    Warning message: Home page accessed
+ERROR - 2024-03-03 10:35:05:491 // accounts.tasks | serve_home_page || /home/shiva/Desktop/Project/joyfulsurprises/accounts/tasks.py:11: Celery ===============    Error message: Home page accessed
+CRITICAL - 2024-03-03 10:35:05:505 // accounts.tasks | serve_home_page || /home/shiva/Desktop/Project/joyfulsurprises/accounts/tasks.py:12: Celery ===============    Critical message: Home page accessed
+INFO - 2024-03-03 10:35:05:520 // celery.app.trace | info || /home/shiva/Desktop/Project/joyfulsurprises/.venv/bin/celery:8: Task accounts.tasks.serve_home_page[68964536-159d-432a-87cb-191dda8fdded] succeeded in 0.0599450080007955s: None

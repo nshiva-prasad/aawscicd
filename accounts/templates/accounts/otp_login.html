@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'accounts/images/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'accounts/css/otp_login.css' %}"  />
+    <title>Reset Password</title>
+</head>
+<body>
+    <div class="centered-div">
+        <h1>Request OTP</h1>
+        <p>Enter the Email or Phone Number associated with your account and we will send you OTP on the email.</p>
+        <form method="post">
+            {% csrf_token %}
+            <label for="text">Email or Phone:</label>
+            <input type="text" id="text" name="email_or_phone" placeholder="Email or Phone"/>
+            <div class="button-container">
+                <button id="submit" type="submit">Send OTP</button>
+                <button>
+                    <a href="{% url 'login' %}" class="logout-btn" style="text-decoration: none;">Login With Password</a>
+                </button>
+            </div>
+            {% if messages %} {% for message in messages %}
+            <div class="alert-info">{{ message }}</div>
+            {% endfor %} {% endif %}
+        </form>
+    </div>
+</body>
+</html>

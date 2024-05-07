@@ -1,0 +1,224 @@
+def custom_login(request):
+    error_message = None 
+    if request.method == 'POST':
+        email_or_phone = request.POST.get('email_or_phone')
+        password = request.POST.get('password')
+        try:
+            user = authenticate(request, email_or_phone=email_or_phone, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+        except ValidationError as e:
+            error_message = e.messages[0]
+    return render(request, 'accounts/login.html', {'error_message': error_message})
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+def custom_login(request):
+    if request.method == 'POST':
+        email_or_phone = request.POST.get('email_or_phone')
+        password = request.POST.get('password')
+        try:
+            user = authenticate(request, email_or_phone=email_or_phone, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home')  # Redirect to your home page after login
+        except ValidationError as e:
+            # Extract the first error message from the list
+            error_message = e.messages[0]
+            # Pass the error message to the template for display
+            return render(request, 'accounts/login.html', {'error_message': error_message})
+    return render(request, 'accounts/login.html')
+
+
+=====================================================================================================
+
+import logging.config
+import inspect
+import time
+import logging
+
+from pathlib import Path
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+LOGGING_CONFIG = None
+
+class ExceptionFilter(logging.Filter):
+    def filter(self, record):
+        logger_name = record.name
+        return (
+            record.levelno != logging.DEBUG or 
+            'Exception while resolving variable' in record.getMessage()
+        ) and not (logger_name.startswith('kombu.') or logger_name.startswith('flower.'))
+
+
+class CustomFormatter(logging.Formatter):
+    def formatTime(self, record, datefmt=None):
+        created = record.created
+        milliseconds = int((created - int(created)) * 1000)
+        ct = self.converter(created)
+        t = time.strftime('%Y-%m-%d %H:%M:%S', ct)
+        return '%s:%03d' % (t, milliseconds)
+
+    def format(self, record):
+        stack = inspect.stack()
+        file_line = 'Unknown file and line'
+
+        app_patterns = ['accounts',]
+
+        for frame in stack:
+            for pattern in app_patterns:
+                if pattern in frame.filename and frame.filename.endswith('.py'):
+                    file_line = f'{frame.filename}:{frame.lineno}'
+                    break
+
+            if file_line != 'Unknown file and line':
+                break
+
+        else:
+            caller_frame = stack[-1]
+            file_line = f'{caller_frame.filename}:{caller_frame.lineno}'
+
+        record.file_line = file_line
+
+        return super().format(record)
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'rich.logging.RichHandler',
+            'formatter': 'custom',
+            'filters': ['exception_only'],
+            'rich_tracebacks': True,
+        },
+        'debug_handler': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': f'{BASE_DIR}/logs/debug.log',
+            'mode': 'a',
+            'encoding': 'utf-8',
+            'formatter': 'custom',
+            'filters': ['exception_only'],
+            'backupCount': 2,
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+        },
+        'system_log_handler': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': f'{BASE_DIR}/logs/djangologs.log',
+            'mode': 'a',
+            'encoding': 'utf-8',
+            'formatter': 'custom',
+            'filters': ['exception_only'],
+            'backupCount': 2,
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+        },
+        "gunicorn_handler": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": f"{BASE_DIR}/logs/gunicorn_access.log",
+            "mode": "a",
+            "encoding": "utf-8",
+            "formatter": "custom",
+            "backupCount": 2,
+            "maxBytes": 1024 * 1024 * 5,  # 5 MB
+        },
+        "celery_handler": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": f"{BASE_DIR}/logs/celery.log",
+            "mode": "a",
+            "encoding": "utf-8",
+            "formatter": "custom",
+            "backupCount": 2,
+            "maxBytes": 1024 * 1024 * 5,  # 5 MB
+        },
+    },
+    'filters': {
+        'exception_only': {
+            '()': ExceptionFilter,
+        },
+    },
+    'formatters': {
+        'custom': {
+            '()': CustomFormatter,
+            'format': '{levelname} - {asctime} // {name} | {funcName} || {file_line}: {message}',
+            'style': '{',
+        },
+    },
+    'loggers': {
+        'django': {
+            'level': 'INFO',
+            'handlers': ['console', 'debug_handler'],
+            'propagate': False,
+        },
+        'gunicorn': {
+            'level': 'INFO',
+            'handlers': ['console','gunicorn_handler'],
+            'propagate': False,
+        },
+        'celery': {
+            'level': 'DEBUG',
+            'handlers': ['celery_handler'],
+            'propagate': False,
+        },
+    },
+    'root': {
+        'level': 'DEBUG',
+        'handlers': ['console','debug_handler', 'system_log_handler'],
+    }
+}
+
+
+logging.config.dictConfig(LOGGING)
+
+
+=============================================================================================
+with color:
+
+import logging.config
+
+
+LOGGING_CONFIG = None
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "()": "colorlog.ColoredFormatter",
+            "format": "%(log_color)s %(levelname)-8s %(asctime)s  %(process)s --- "
+            "[%(name)s] %(funcName)-24s %(lineno)-8s : %(message)s",
+            "datefmt": "%Y-%m-%d %H:%M:%S",
+            "log_colors": {
+                "DEBUG": "blue",
+                "INFO": "green",
+                "WARNING": "yellow",
+                "ERROR": "red",
+                "CRITICAL": "bold_red",
+            },
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        },
+    },
+    "loggers": {
+        # Default logger for any logger name
+        "": {
+            "level": "INFO",
+            "handlers": ["console", ],
+            "propagate": False,
+        },
+        # Logger for django server logs with django.server logger name
+        "django.server": {
+            "level": "DEBUG",
+            "handlers": ["console", ],
+            "propagate": False,
+        },
+    },
+}
+logging.config.dictConfig(LOGGING)

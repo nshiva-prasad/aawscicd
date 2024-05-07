@@ -1,0 +1,62 @@
+gunicorn -c gunicorn.conf.py joyfulsurprises.wsgi:application && celery -A joyfulsurprises worker -E && celery -A joyfulsurprises flower -E
+
+gunicorn -c gunicorn.conf.py joyfulsurprises.wsgi:application
+gunicorn --bind 0.0.0.0:8000 joyfulsurprises.wsgi:application
+
+celery beat
+
+Run This - celery -A joyfulsurprises worker -l info --loglevel=info
+
+celery -A joyfulsurprises worker --loglevel=INFO  --without-mingle --without-heartbeat -Ofair --pool=solo
+
+
+And This - celery -A joyfulsurprises flower --loglevel=info -E
+
+
+celery flower -A joyfulsurprises --address=127.0.0.1 --port=5555
+
+http://localhost:5555/
+
+admin:secretpassword
+
+celery -A joyfulsurprises flower -l info --basic_auth=admin:password
+
+
+celery -A joyfulsurprises flower --basic_auth=admin:password
+
+################################################################################
+
+class TestPrintCronJob(CronJobBase):
+    
+    RUN_EVERY_MINS = 2
+    RETRY_AFTER_FAILURE_MINS = 1
+    #RUN_AT_TIMES = ['11:30', '14:00', '23:15']
+
+    schedule = Schedule(run_every_mins=RUN_EVERY_MINS, retry_after_failure_mins=RETRY_AFTER_FAILURE_MINS)
+    
+    code = 'accounts.test_print_cron_job'  
+    def do(self):
+        print("-----------------printing from the function job===========")
+        logger.info(f"Running Cron Job {self.code}")
+
+class MyCronJob(CronJobBase):
+    RUN_AT_TIMES = ['11:30', '14:00', '23:15']
+
+    schedule = Schedule(run_at_times=RUN_AT_TIMES)
+
+
+class MyCronJob(CronJobBase):
+    RUN_EVERY_MINS = 120 # every 2 hours
+    RUN_AT_TIMES = ['6:30']
+
+    schedule = Schedule(run_every_mins=RUN_EVERY_MINS, run_at_times=RUN_AT_TIMES)
+
+class MyCronJob(CronJobBase):
+    RUN_EVERY_MINS = 10
+    MIN_NUM_FAILURES = 3
+
+    schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
+    code = 'app.MyCronJob'
+
+    def do(self):
+        ... some action here ...

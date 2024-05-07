@@ -1,0 +1,33 @@
+### gunicorn service -------------------
+status ---- sudo systemctl status gunicorn
+start ----- sudo systemctl start gunicorn
+stop ------ sudo systemctl stop gunicorn
+reload ---- sudo systemctl reload gunicorn
+
+
+### gunicorn.socket --------------------
+status ---- sudo systemctl status gunicorn.socket
+start ----- sudo systemctl start gunicorn.socket
+stop ------ sudo systemctl stop gunicorn.socket
+reload ---- sudo systemctl reload gunicorn.socket
+
+
+### celery ----------------------------
+status ---- sudo systemctl status celery
+start ----- sudo systemctl start celery
+stop ------ sudo systemctl stop celery
+reload ---- sudo systemctl reload celery
+
+
+### flower ----------------------------
+status ---- sudo systemctl status flower
+start ----- sudo systemctl start flower
+stop ------ sudo systemctl stop flower
+reload ---- sudo systemctl reload flower
+
+
+### nginx ----------------------------
+status ---- sudo systemctl status nginx
+start ----- sudo systemctl start nginx
+stop ------ sudo systemctl stop nginx
+reload ---- sudo systemctl reload nginx
