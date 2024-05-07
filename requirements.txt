@@ -14,3 +14,4 @@ pillow==10.2.0
 django-taggit==5.0.1
 flake8 == 7.0.0
 django-ckeditor == 6.7.1 
+Faker == 25.0.1 
