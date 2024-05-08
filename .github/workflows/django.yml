@@ -43,3 +43,12 @@ jobs:
                   cd /home/projectcicd/aawscicd
                   ./deploy.sh
 
+            # After deploy.sh completes, check the exit code and proceed accordingly
+            - name: Check deployment status
+              if: ${{ job.status == 'success' }}
+              run: echo "Deployment completed successfully"
+          
+            - name: Handle deployment failure
+              if: ${{ job.status != 'success' }}
+              run: echo "Deployment failed"
+
