@@ -38,7 +38,7 @@ jobs:
                 username: ${{ secrets.EC2_USERNAME }}
                 key: ${{ secrets.SSH_PRIVATE_KEY }}
                 script: |
-                  cd awsdemo  # Change directory to your Django project directory
-                  chmod +x deploy.sh  # Ensure script is executable
-                  ./deploy.sh  # Execute the deployment script
+                  cd /home/projectcicd/aawscicd
+                  chmod +x deploy.sh
+                  ./deploy.sh
 
