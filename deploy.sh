@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Know the current user running the Script
+echo "Current User running the deploy.sh =========>: $(whoami)"
+
 # Navigate to the project directory
 echo "Navigating to the Project Folder"
 cd /home/projectcicd/aawscicd
