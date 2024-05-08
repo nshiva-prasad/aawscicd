@@ -25,11 +25,11 @@ pip install -r requirements.txt
 
 # Collect static files
 echo "Collecting static files..."
-nohup python manage.py runserver 0.0.0.0:8000 > /dev/null 2>&1 &
+python manage.py collectstatic --noinput
 
 # Start Django development server
 echo "Starting Django development server..."
-python manage.py runserver 0.0.0.0:8000 &
+nohup python manage.py runserver 0.0.0.0:8000 > /dev/null 2>&1 &
 
 echo "Development Server started in the background"
 
