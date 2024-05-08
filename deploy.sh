@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#Changing the user to Ubuntu
+echo "Changing the user to Ubuntu"
+su - ubuntu
+
 # Navigate to the project directory
 echo "Navigating to the Project Folder"
 cd /home/projectcicd/aawscicd
