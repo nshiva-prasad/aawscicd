@@ -5,12 +5,12 @@ server {
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
-        root /home/shiva/Desktop/Project/joyfulsurprises;
+        root /home/projectcid/aawscicd;
     }
 
     location / {
         include proxy_params;
-        proxy_pass http://unix:/run/gunicorn.sock;
+        proxy_pass http://localhost:8000;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Cache-Control "no-cache, no-store, must-revalidate";
         proxy_cache_bypass $http_upgrade;
