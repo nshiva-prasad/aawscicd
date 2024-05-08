@@ -29,5 +29,11 @@ python manage.py collectstatic --noinput
 
 # Start Django development server
 echo "Starting Django development server..."
-python manage.py runserver 0.0.0.0:8000
+python manage.py runserver 0.0.0.0:8000 &
+
+echo "Development Server started in the background"
+
+sleep 10
+
+echo "The Development Server is up and running"
 
