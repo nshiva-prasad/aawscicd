@@ -39,6 +39,7 @@ jobs:
                 username: ${{ secrets.EC2_USERNAME }}
                 key: ${{ secrets.SSH_PRIVATE_KEY }}
                 script: |
+                  sudo -i
                   cd /home/projectcicd/aawscicd
                   chmod +x deploy.sh
                   ./deploy.sh
