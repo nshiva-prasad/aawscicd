@@ -41,6 +41,5 @@ jobs:
                 script: |
                   sudo -i
                   cd /home/projectcicd/aawscicd
-                  chmod +x deploy.sh
                   ./deploy.sh
 
