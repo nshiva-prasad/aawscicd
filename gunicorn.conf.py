@@ -10,5 +10,5 @@ loglevel = 'INFO'
 capture_output = True
  
 # Redirect standard output and error streams to separate logs
-accesslog = f'{BASE_DIR}/joyfulsurprises/logs/gunicorn_access.log'
-errorlog = f'{BASE_DIR}/joyfulsurprises/logs/gunicorn_error.log'
+accesslog = f'{BASE_DIR}/aawscicd/logs/gunicorn_access.log'
+errorlog = f'{BASE_DIR}/aawscicd/logs/gunicorn_error.log'
