@@ -320,3 +320,4 @@ Not Found: /None
 [2024-05-09 12:35:22 +0530] [2814] [INFO] Booting worker with pid: 2814
 [2024-05-09 12:35:22 +0530] [2815] [INFO] Booting worker with pid: 2815
 [2024-05-09 12:35:22 +0530] [2816] [INFO] Booting worker with pid: 2816
+ - - [09/May/2024:12:44:35 +0530] "GET / HTTP/1.0" 200 11878 "-" "-"
