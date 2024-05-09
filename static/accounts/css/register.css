@@ -3,10 +3,7 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url("images/register-image.jpg");
+  background-image: url("images/Sign-up-page-BG.png");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -16,12 +13,29 @@ body {
 
 .centered-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
 }
+
+.logo-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #21b7ea;
+  margin-bottom: 60px;
+}
+
+.logo-image {
+  width: 200px;
+  height: auto;
+}
+
 
 .left-div,
 .right-div {
-  width: 400px;
-  height: 750px;
+  width: 500px;
+  height: 600px;
   padding: 20px;
 }
 
@@ -175,15 +189,15 @@ a {
 
 /* Mobile View Configuration */
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .centered-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;
-    height: 100vh;
-    margin: 0;
-    padding: 20px;
+    justify-content: center;
+    max-width: 100%;
+    height: auto;
+    padding: 5px;
     box-sizing: border-box;
   }
 
@@ -192,15 +206,30 @@ a {
   }
 
   .left-div {
-    width: 300px;
-    height: 740px;
+    max-width: 90%;
+    width: auto;
+    height: auto;
     padding: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .logo-container {
+    margin-bottom: 20px;
   }
 
   .button-container button {
     flex: 1;
     margin-top: 0px;
-    margin-right: 10px;
+    margin-right: 5px;
     text-align: center;
     padding: 10px 20px;
     white-space: nowrap;

@@ -2,21 +2,8 @@
   display: none;
 }
 
-/* body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(90deg, #48c6ef 0%, #6f86d6 100%);
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-} */
-
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url("images/shopping-bag-cart.jpg");
+  background-image: url("images/Sign-up-page-BG.png");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -26,16 +13,36 @@ body {
 
 .centered-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+}
+
+.logo-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #21b7ea;
+  margin-bottom: 100px;
+}
+
+.logo-image {
+  width: 200px;
+  height: auto;
 }
 
 .left-div,
 .right-div {
-  width: 400px;
-  height: 620px;
+  width: 500px;
+  height: 600px;
   padding: 20px;
 }
 
 .left-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: white;
 }
 
@@ -44,20 +51,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.left-div img {
-  max-width: 100%;
-  height: 15%;
-  display: block;
-  margin: 0 auto;
-  border-radius: 5px;
-}
-
-h1 {
-  text-align: center;
-  font-size: 2em;
-  margin-bottom: 20px;
 }
 
 form {
@@ -82,6 +75,7 @@ label {
 .button-container {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
   margin-top: 10px;
 }
 
@@ -151,40 +145,18 @@ label {
   color: #721c24;
   border-color: #f5c6cb;
 }
-.social-icons {
-  margin-top: 20px;
-}
-
-.social-icons p,
-.contact-icons p {
-  display: inline-block;
-  margin-right: 10px;
-  vertical-align: middle;
-}
-
-.social-icons img,
-.contact-icons img {
-  display: inline-block;
-  width: 30px;
-  height: auto;
-  margin-right: 10px;
-  vertical-align: middle;
-}
-a {
-  text-decoration: none;
-}
 
 /* Mobile View Configuration */
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .centered-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;
-    height: 100vh;
-    margin: 0;
-    padding: 40px;
+    justify-content: center;
+    max-width: 100%;
+    height: auto;
+    padding: 5px;
     box-sizing: border-box;
   }
 
@@ -193,15 +165,30 @@ a {
   }
 
   .left-div {
-    width: 300px;
+    max-width: 90%;
+    width: auto;
     height: auto;
     padding: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .logo-container {
+    margin-bottom: 50px;
   }
 
   .button-container button {
     flex: 1;
     margin-top: 0px;
-    margin-right: 10px;
+    margin-right: 5px;
     text-align: center;
     padding: 10px 20px;
     white-space: nowrap;
