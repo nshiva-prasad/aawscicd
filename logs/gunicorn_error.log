@@ -292,3 +292,31 @@ Not Found: /None
 [2024-05-06 11:33:15 +0530] [172991] [INFO] Worker exiting (pid: 172991)
 [2024-05-06 11:33:15 +0530] [169513] [ERROR] Worker (pid:172991) was sent SIGTERM!
 [2024-05-06 11:33:15 +0530] [169513] [INFO] Shutting down: Master
+[2024-05-09 12:04:24 +0530] [2316] [INFO] Starting gunicorn 21.2.0
+[2024-05-09 12:04:24 +0530] [2316] [INFO] Listening at: unix:/run/gunicorn.sock (2316)
+[2024-05-09 12:04:24 +0530] [2316] [INFO] Using worker: sync
+[2024-05-09 12:04:24 +0530] [2318] [INFO] Booting worker with pid: 2318
+[2024-05-09 12:04:24 +0530] [2319] [INFO] Booting worker with pid: 2319
+[2024-05-09 12:04:24 +0530] [2320] [INFO] Booting worker with pid: 2320
+[2024-05-09 12:25:35 +0530] [2316] [INFO] Handling signal: term
+[2024-05-09 12:25:35 +0530] [2320] [INFO] Worker exiting (pid: 2320)
+[2024-05-09 12:25:35 +0530] [2318] [INFO] Worker exiting (pid: 2318)
+[2024-05-09 12:25:35 +0530] [2319] [INFO] Worker exiting (pid: 2319)
+[2024-05-09 12:25:36 +0530] [2316] [INFO] Shutting down: Master
+[2024-05-09 12:25:36 +0530] [2728] [INFO] Starting gunicorn 21.2.0
+[2024-05-09 12:25:36 +0530] [2728] [INFO] Listening at: unix:/run/gunicorn.sock (2728)
+[2024-05-09 12:25:36 +0530] [2728] [INFO] Using worker: sync
+[2024-05-09 12:25:36 +0530] [2730] [INFO] Booting worker with pid: 2730
+[2024-05-09 12:25:36 +0530] [2731] [INFO] Booting worker with pid: 2731
+[2024-05-09 12:25:36 +0530] [2732] [INFO] Booting worker with pid: 2732
+[2024-05-09 12:35:21 +0530] [2728] [INFO] Handling signal: term
+[2024-05-09 12:35:21 +0530] [2730] [INFO] Worker exiting (pid: 2730)
+[2024-05-09 12:35:21 +0530] [2731] [INFO] Worker exiting (pid: 2731)
+[2024-05-09 12:35:21 +0530] [2732] [INFO] Worker exiting (pid: 2732)
+[2024-05-09 12:35:21 +0530] [2728] [INFO] Shutting down: Master
+[2024-05-09 12:35:22 +0530] [2812] [INFO] Starting gunicorn 21.2.0
+[2024-05-09 12:35:22 +0530] [2812] [INFO] Listening at: unix:/run/gunicorn.sock (2812)
+[2024-05-09 12:35:22 +0530] [2812] [INFO] Using worker: sync
+[2024-05-09 12:35:22 +0530] [2814] [INFO] Booting worker with pid: 2814
+[2024-05-09 12:35:22 +0530] [2815] [INFO] Booting worker with pid: 2815
+[2024-05-09 12:35:22 +0530] [2816] [INFO] Booting worker with pid: 2816
