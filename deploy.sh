@@ -11,10 +11,6 @@ cd /home/projectcicd/aawscicd
 echo "Activating the Virtual Environment"
 source ../venv/bin/activate
 
-# Kill the Django development server if it's already running
-echo "Stopping Django development server if running..."
-kill $(lsof -t -i:8000)  # Kill process using port 8000 (change port if necessary)
-
 # Pull latest changes from GitHub
 echo "Pulling latest changes from GitHub..."
 git pull origin main
@@ -27,13 +23,39 @@ pip install -r requirements.txt
 echo "Collecting static files..."
 python manage.py collectstatic --noinput
 
-# Start Django development server
-echo "Starting Django development server..."
-nohup python manage.py runserver 0.0.0.0:8000 > /dev/null 2>&1 &
+echo "Restarting the Nginx"
+sudo systemctl restart nginx
 
-echo "Development Server started in the background"
+echo "Checking the Gunicorn log permissions"
+sudo chown -R ubuntu:www-data /home/projectcicd/aawscicd/logs/
 
-sleep 10
+echo "Restarting the gunicorn.socket"
+sudo systemctl restart gunicorn.socket
 
-echo "The Development Server is up and running"
+echo "Sleeping for 2 seconds"
+sleep 2
 
+echo "Restarting the gunicorn.service"
+sudo systemctl restart gunicorn.service
+
+echo "Sleeping for 5 seconds"
+sleep 5
+
+echo "Restarting the celery.service"
+sudo systemctl restart celery.service
+
+echo "Sleeping for 5 seconds"
+sleep 5
+
+echo "Restarting the flower.service"
+sudo systemctl restart flower.service
+
+echo "Sleeping for 2 seconds"
+sleep 2
+
+echo "Production Server started in the background"
+
+echo "Sleeping for 1 seconds"
+sleep 1
+
+echo "The Production Server is up and running"
