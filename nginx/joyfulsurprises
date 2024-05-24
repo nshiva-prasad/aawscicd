@@ -1,7 +1,7 @@
 server {
     listen 80;  # Adjust port if needed
 
-    server_name 18.61.224.88;  # Replace with your server name or IP
+    server_name 18.61.5.9;  # Replace with your server name or IP
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
